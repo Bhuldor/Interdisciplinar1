@@ -34,12 +34,12 @@ public class PlayerController : MonoBehaviour{
         }
 
         if (Input.GetMouseButtonDown(0)){
-            //Debug.Log("True");
+            Debug.Log("True");
             gunController.isFiring = true;
         }
 
         if (Input.GetMouseButtonUp(0)){
-            //Debug.Log("False");
+            Debug.Log("False");
             gunController.isFiring = false;
         }
     }
