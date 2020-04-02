@@ -37,15 +37,15 @@ public class DialogueManager : MonoBehaviour
             sentences.Enqueue(sentence);
         }
 
-        DisplayNextSentence(DialogueType.chat);
+        DisplayNextSentence("chat");
     }
 
-    public void DisplayNextSentence(DialogueType type)
+    public void DisplayNextSentence(string type)
     {
         if (sentences.Count == 0)
         {
             EndDialogue();
-            if(type == DialogueType.store) 
+            if(type == "store") 
 
             return;
         }
