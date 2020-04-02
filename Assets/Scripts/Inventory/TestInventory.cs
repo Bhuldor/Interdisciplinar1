@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TestInventory : MonoBehaviour
 {
     public string ItemName;
     public int id;
     public int quantity;
+    public Transform inventoryParent;
+    public Font fontMessage;
 
     public void AddTestItem()
     {
@@ -32,9 +35,26 @@ public class TestInventory : MonoBehaviour
 
     public void ListInventory()
     {
+        int count = inventoryParent.childCount;
+        if(count != 0)
+        {
+            for (int a = 0; a < count; a++)
+            {
+                Destroy(inventoryParent.GetChild(a).gameObject);
+            }
+        }
+        
         foreach (Item i in Inventory.instance.items)
         {
-            Debug.Log($"id: {i.id} name: {i.name} quantity: {i.quantity}");
+            GameObject newItem = new GameObject(i.name);
+            var itemText = newItem.AddComponent<Text>();
+            newItem.AddComponent<CanvasRenderer>();
+
+            itemText.text = $"{i.name} x{i.quantity}";
+            itemText.font = fontMessage;
+            itemText.color = Color.black;
+            itemText.rectTransform.sizeDelta = new Vector2(100, 35);
+            itemText.transform.SetParent(inventoryParent);
         }
     }
 }
