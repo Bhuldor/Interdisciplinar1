@@ -11,6 +11,11 @@ public class TestInventory : MonoBehaviour
     public Transform inventoryParent;
     public Font fontMessage;
 
+    public delegate void DropObtain(Item item);
+    public static event DropObtain OnDropObtain;
+
+
+
     public void AddTestItem()
     {
         Item test = new Item {
@@ -20,6 +25,7 @@ public class TestInventory : MonoBehaviour
         };
 
         Inventory.instance.Add(test);
+        OnDropObtain?.Invoke(test);
     }
 
     public void RemoveTestItem()
