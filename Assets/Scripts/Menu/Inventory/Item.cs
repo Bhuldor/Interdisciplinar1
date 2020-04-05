@@ -1,10 +1,9 @@
-﻿using UnityEngine;
-
-public class Item
+﻿public class Item
 {
     public string name = "New Item";
     public int id;
     public int quantity;
+    public string description = "Esse item pode ser usado para testar coisas.";
 
     public override bool Equals(object other)
     {

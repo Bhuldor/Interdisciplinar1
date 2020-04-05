@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class TestInventory : MonoBehaviour
 {
-    public string ItemName;
-    public int id;
+    private string ItemName = "Item teste";
+    private int id = 0;
     public int quantity;
-    public Transform inventoryParent;
+    public GameObject inventoryParent;
     public Font fontMessage;
 
     public delegate void DropObtain(Item item);
@@ -19,11 +19,11 @@ public class TestInventory : MonoBehaviour
     public void AddTestItem()
     {
         Item test = new Item {
-            name = ItemName,
+            name = ItemName + " " + id,
             id = this.id,
             quantity = this.quantity
         };
-
+        id++;
         Inventory.instance.Add(test);
         OnDropObtain?.Invoke(test);
     }
@@ -41,12 +41,13 @@ public class TestInventory : MonoBehaviour
 
     public void ListInventory()
     {
-        int count = inventoryParent.childCount;
+        
+        int count = inventoryParent.transform.childCount;
         if(count != 0)
         {
             for (int a = 0; a < count; a++)
             {
-                Destroy(inventoryParent.GetChild(a).gameObject);
+                Destroy(inventoryParent.transform.GetChild(a).gameObject);
             }
         }
         
@@ -60,7 +61,9 @@ public class TestInventory : MonoBehaviour
             itemText.font = fontMessage;
             itemText.color = Color.black;
             itemText.rectTransform.sizeDelta = new Vector2(100, 35);
-            itemText.transform.SetParent(inventoryParent);
+            itemText.transform.SetParent(inventoryParent.transform);
+            LeanTween.scale(newItem, new Vector3(1, 1, 1), 0.1f);
         }
+        LeanTween.scale(inventoryParent, new Vector3(1, 1, 1), 0.1f);
     }
 }
