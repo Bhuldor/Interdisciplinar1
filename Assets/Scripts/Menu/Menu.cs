@@ -15,11 +15,13 @@ public class Menu : MonoBehaviour
     public Image musicImage;
     public Image effectsImage;
     public GameObject mapPanel;
-    public GameObject profilePanel;
+    public GameObject profilePanel1;
+    public GameObject profilePanel2;
     public GameObject inventoryPanel;
     public GameObject inventoryContentPanel;
     public GameObject settingsPanel;
     public GameObject descriptionPanel;
+    public GameObject equipedPanel;
     public Text descriptionText;
     public Text descriptionStatusText;
     public Text equipButtonText;
@@ -40,40 +42,62 @@ public class Menu : MonoBehaviour
 
     public delegate void OpeningInventory();
     public static event OpeningInventory OnOpeningInventory;
+
+    public void Start()
+    {
+        transform.position = new Vector3(Screen.width / 2, transform.position.y, transform.position.z);
+    }
     public void OpenCloseMenu()
     {
         if (!menuIsOpen)
         {
             menuIsOpen = true;
             menuArrowImage.sprite = upArrowSprite;
-            LeanTween.move(menuPanel, menuPanel.transform.position + new Vector3(0, -90, 0), 0.1f);
+            LeanTween.move(menuPanel, menuPanel.transform.position - new Vector3(0, Screen.height * 0.25f, 0), 0.1f);
         }
         else
         {
             menuIsOpen = false;
             menuArrowImage.sprite = downArrowSprite;
-            LeanTween.move(menuPanel, menuPanel.transform.position + new Vector3(0, 90, 0), 0.1f);
+            LeanTween.move(menuPanel, menuPanel.transform.position + new Vector3(0, Screen.height * 0.25f, 0), 0.1f);
             CloseOpenedPanels();
         }
     }
     public void CloseOpenedPanels()
     {
-        if(mapPanelIsOpen)
+        if (mapPanelIsOpen)
+        {
             LeanTween.scale(mapPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
-        if(profilePanelIsOpen)
-            LeanTween.scale(profilePanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
+            mapPanelIsOpen = false;
+        }
+        if (profilePanelIsOpen)
+        {
+            LeanTween.scale(profilePanel1, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
+            LeanTween.scale(profilePanel2, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
+            profilePanelIsOpen = false;
+        }
+            
         if (inventoryPanelIsOpen)
         {
             LeanTween.scale(inventoryPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
             LeanTween.scale(descriptionPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
+            LeanTween.scale(equipedPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
+            inventoryPanelIsOpen = false;
         }
-        if(settingsPanelIsOpen)
+        if (settingsPanelIsOpen)
+        {
             LeanTween.scale(settingsPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
-
+            settingsPanelIsOpen = false;
+        }
     }
 
     public void OpenMap()
     {
+        if (mapPanelIsOpen)
+        {
+            CloseOpenedPanels();
+            return;
+        }
         CloseOpenedPanels();
         mapPanelIsOpen = true;
         LeanTween.scale(mapPanel, new Vector3(1, 1, 1), 0.1f);
@@ -81,16 +105,27 @@ public class Menu : MonoBehaviour
 
     public void OpenProfile()
     {
+        if (profilePanelIsOpen)
+        {
+            CloseOpenedPanels();
+            return;
+        }
         CloseOpenedPanels();
         profilePanelIsOpen = true;
-        LeanTween.scale(profilePanel, new Vector3(1, 1, 1), 0.1f);
+        LeanTween.scale(profilePanel1, new Vector3(1, 1, 1), 0.1f);
+        LeanTween.scale(profilePanel2, new Vector3(1, 1, 1), 0.1f);
     }
 
     public void OpenInventory()
     {
+        if (inventoryPanelIsOpen)
+        {
+            CloseOpenedPanels();
+            return;
+        }
         CloseOpenedPanels();
         inventoryPanelIsOpen = true;
-        Debug.Log(inventoryContentPanel.transform.childCount);
+
         int count = inventoryContentPanel.transform.childCount;
         if (count != 0)
         {
@@ -99,7 +134,7 @@ public class Menu : MonoBehaviour
                Destroy(inventoryContentPanel.transform.GetChild(a).gameObject);
             }
         }
-        Debug.Log(inventoryContentPanel.transform.childCount);
+
 
         foreach (Item i in Inventory.instance.items)
         {
@@ -124,6 +159,7 @@ public class Menu : MonoBehaviour
     public void ClickOnItem(Item item)
     {
         LeanTween.scale(descriptionPanel, new Vector3(1, 1, 1), 0.1f);
+        LeanTween.scale(equipedPanel, new Vector3(1, 1, 1), 0.1f);
         descriptionText.text = $"{item.name} \n {item.description}";
         if(item is Equip)
         {
@@ -144,6 +180,11 @@ public class Menu : MonoBehaviour
 
     public void OpenSettings()
     {
+        if (settingsPanelIsOpen)
+        {
+            CloseOpenedPanels();
+            return;
+        }
         CloseOpenedPanels();
         settingsPanelIsOpen = true;
         LeanTween.scale(settingsPanel, new Vector3(1, 1, 1), 0.1f);

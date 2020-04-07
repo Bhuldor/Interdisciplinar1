@@ -31,7 +31,7 @@ public class DropObtain : MonoBehaviour
     {
         Item itemToShow = listToShow.Dequeue() as Item;
         textPanel.text = $"Você obteve {itemToShow.name} x{itemToShow.quantity}";
-        Vector3 dest = dropPanel.transform.position - new Vector3(0, 50, 0);
+        Vector3 dest = dropPanel.transform.position - new Vector3(0, Screen.height * 0.1f, 0);
         LeanTween.move(dropPanel, dest, 0.3f);
         StartCoroutine(hidePanel());
     }
@@ -39,9 +39,14 @@ public class DropObtain : MonoBehaviour
     IEnumerator hidePanel()
     {
         yield return new WaitForSeconds(3f);
-        Vector3 dest = dropPanel.transform.position + new Vector3(0, 50, 0);
+        Vector3 dest = dropPanel.transform.position + new Vector3(0, Screen.height * 0.1f, 0);
         LeanTween.move(dropPanel, dest, 0.3f);
         yield return new WaitForSeconds(0.3f);
         showingPanel = false;
+    }
+
+    public void OnDestroy()
+    {
+        TestInventory.OnDropObtain -= DropObtained;
     }
 }
