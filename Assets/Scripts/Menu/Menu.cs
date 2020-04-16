@@ -22,6 +22,7 @@ public class Menu : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject descriptionPanel;
     public GameObject equipedPanel;
+    public Image fadePanel;
     public Text descriptionText;
     public Text descriptionStatusText;
     public Text equipButtonText;
@@ -40,6 +41,8 @@ public class Menu : MonoBehaviour
     private bool musicIsOn = true;
     private bool effectsIsOn = true;
 
+    private bool fading = false;
+
     public delegate void OpeningInventory();
     public static event OpeningInventory OnOpeningInventory;
 
@@ -49,6 +52,7 @@ public class Menu : MonoBehaviour
     }
     public void OpenCloseMenu()
     {
+        StartCoroutine(FadePanel());
         if (!menuIsOpen)
         {
             menuIsOpen = true;
@@ -62,6 +66,36 @@ public class Menu : MonoBehaviour
             LeanTween.move(menuPanel, menuPanel.transform.position + new Vector3(0, Screen.height * 0.25f, 0), 0.1f);
             CloseOpenedPanels();
         }
+    }
+
+    private IEnumerator FadePanel()
+    {
+        fading = true;
+        fadePanel.enabled = true;
+        float alpha = fadePanel.color.a;
+        while (fading)
+        {
+            yield return null;
+            if (!menuIsOpen) //needs to fadeOut
+            {
+                alpha -= 0.1f;
+                fadePanel.color = new Color(fadePanel.color.r, fadePanel.color.g, fadePanel.color.b, alpha);
+                if (alpha <= 0)
+                {
+                    fading = false;
+                    fadePanel.enabled = false;
+                }
+            }
+            else //needs to fade in
+            {
+                alpha += 0.1f;
+                fadePanel.color = new Color(fadePanel.color.r, fadePanel.color.g, fadePanel.color.b, alpha);
+                if (alpha >= 0.6f)
+                    fading = false;
+            }
+        }
+        
+        
     }
     public void CloseOpenedPanels()
     {
