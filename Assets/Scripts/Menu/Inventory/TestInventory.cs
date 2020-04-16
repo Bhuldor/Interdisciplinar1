@@ -5,36 +5,25 @@ using UnityEngine.UI;
 
 public class TestInventory : MonoBehaviour
 {
-    private string ItemName = "Item teste";
-    private int id = 0;
-    public int quantity;
     public GameObject inventoryParent;
     public Font fontMessage;
-
-    public delegate void DropObtain(Item item);
-    public static event DropObtain OnDropObtain;
-
 
 
     public void AddTestItem()
     {
-        Item test = new Item {
-            name = ItemName + " " + id,
-            id = this.id,
-            quantity = this.quantity
+        Item testItem = new Item()
+        {
+            quantity = 1
         };
-        id++;
-        Inventory.instance.Add(test);
-        OnDropObtain?.Invoke(test);
+        Inventory.instance.ObtainDrop(testItem);
+        
     }
 
+    
     public void RemoveTestItem()
     {
-        Item test = new Item
-        {
-            id = this.id,
-            quantity = this.quantity
-        };
+        Item test = new Item();
+        
 
         Inventory.instance.Remove(test);
     }

@@ -11,7 +11,7 @@ public class DropObtain : MonoBehaviour
     private bool showingPanel = false;
     void Start()
     {
-        TestInventory.OnDropObtain += DropObtained;
+        Inventory.OnDropObtain += DropObtained;
     }
 
     void Update()
@@ -25,7 +25,8 @@ public class DropObtain : MonoBehaviour
 
     public void DropObtained(Item item)
     {
-        listToShow.Enqueue(item);
+        if(item.quantity != 0)
+            listToShow.Enqueue(item);
     }
     public void showPanel()
     {
@@ -47,6 +48,6 @@ public class DropObtain : MonoBehaviour
 
     public void OnDestroy()
     {
-        TestInventory.OnDropObtain -= DropObtained;
+        Inventory.OnDropObtain -= DropObtained;
     }
 }
