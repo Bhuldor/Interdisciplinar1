@@ -26,6 +26,10 @@ public class Menu : MonoBehaviour
     public Text descriptionText;
     public Text descriptionStatusText;
     public Text equipButtonText;
+    public Text helmetEquipedText;
+    public Text armorEquipedText;
+    public Text legsEquipedText;
+    public Text weaponEquipedText;
     public Button equipButton;
     public Font pixelFont;
 
@@ -42,6 +46,8 @@ public class Menu : MonoBehaviour
     private bool effectsIsOn = true;
 
     private bool fading = false;
+
+    private Equip inventory_SelectedEquip;
 
     public delegate void OpeningInventory();
     public static event OpeningInventory OnOpeningInventory;
@@ -159,22 +165,27 @@ public class Menu : MonoBehaviour
         }
         CloseOpenedPanels();
         inventoryPanelIsOpen = true;
+        LoadInventory();
+    }
 
+    private void LoadInventory()
+    {
         int count = inventoryContentPanel.transform.childCount;
         if (count != 0)
         {
             for (int a = 0; a < count; a++)
             {
-               Destroy(inventoryContentPanel.transform.GetChild(a).gameObject);
+                Destroy(inventoryContentPanel.transform.GetChild(a).gameObject);
             }
         }
 
+        count = 0;
 
         foreach (Item i in Inventory.instance.items)
         {
             if (i.quantity > 0)
             {
-
+                count++;
                 GameObject newItem = new GameObject(i.name);
                 var itemText = newItem.AddComponent<Text>();
                 var newButton = newItem.AddComponent<Button>();
@@ -187,21 +198,73 @@ public class Menu : MonoBehaviour
                 newButton.transform.SetParent(inventoryContentPanel.transform);
                 newButton.onClick.AddListener(() => ClickOnItem(i));
 
+                if(count == 1)
+                {
+                    ClickOnItem(i);
+                }
+
                 LeanTween.scale(newItem, new Vector3(1, 1, 1), 0.1f);
             }
         }
         LeanTween.scale(inventoryPanel, new Vector3(1, 1, 1), 0.1f);
         OnOpeningInventory?.Invoke();
+        
     }
 
     public void ClickOnItem(Item item)
     {
         LeanTween.scale(descriptionPanel, new Vector3(1, 1, 1), 0.1f);
+        UpdateEquipedPanel();
+        UpdateDescriptionpanel(item);
+    }
+
+    private void UpdateEquipedPanel()
+    {
         LeanTween.scale(equipedPanel, new Vector3(1, 1, 1), 0.1f);
+        if(PlayerEquipment.instance.helmet.name != "Item nulo")
+        {
+            helmetEquipedText.text = $"Capacete: {PlayerEquipment.instance.helmet.name}\n Vida: {PlayerEquipment.instance.helmet.health} | Ataque: {PlayerEquipment.instance.helmet.damage} | Defesa: {PlayerEquipment.instance.helmet.defense} | Veloc.: {PlayerEquipment.instance.helmet.speed}";
+        }
+        else
+        {
+            helmetEquipedText.text = "Capacete: --";
+        }
+
+        if (PlayerEquipment.instance.armor.name != "Item nulo")
+        {
+            armorEquipedText.text = $"Armadura: {PlayerEquipment.instance.armor.name}\n Vida: {PlayerEquipment.instance.armor.health} | Ataque: {PlayerEquipment.instance.armor.damage} | Defesa: {PlayerEquipment.instance.armor.defense} | Veloc.: {PlayerEquipment.instance.armor.speed}";
+        }
+        else
+        {
+            armorEquipedText.text = "Armadura: --";
+        }
+
+        if (PlayerEquipment.instance.legs.name != "Item nulo")
+        {
+            legsEquipedText.text = $"Calça: {PlayerEquipment.instance.legs.name}\n Vida: {PlayerEquipment.instance.legs.health} | Ataque: {PlayerEquipment.instance.legs.damage} | Defesa: {PlayerEquipment.instance.legs.defense} | Veloc.: {PlayerEquipment.instance.legs.speed}";
+        }
+        else
+        {
+            legsEquipedText.text = "Calça: --";
+        }
+
+        if (PlayerEquipment.instance.weapon.name != "Item nulo")
+        {
+            weaponEquipedText.text = $"Arma: {PlayerEquipment.instance.weapon.name}\n Vida: {PlayerEquipment.instance.weapon.health} | Ataque: {PlayerEquipment.instance.weapon.damage} | Defesa: {PlayerEquipment.instance.weapon.defense} | Veloc.: {PlayerEquipment.instance.weapon.speed}";
+        }
+        else
+        {
+            weaponEquipedText.text = "Arma: --";
+        }
+    }
+
+    private void UpdateDescriptionpanel(Item item)
+    {
         descriptionText.text = $"{item.name} \n {item.description}";
-        if(item is Equip)
+        if (item is Equip)
         {
             Equip equip = item as Equip;
+            inventory_SelectedEquip = equip;
             descriptionStatusText.text = $"Status \nVida: {equip.health} \nAtaque: {equip.damage} \nDefesa: {equip.defense} \nVelocidade: {equip.speed}";
             equipButton.enabled = true;
             equipButtonText.text = "Equipar";
@@ -212,10 +275,7 @@ public class Menu : MonoBehaviour
             equipButton.enabled = false;
             equipButtonText.text = "";
         }
-        
     }
-
-
     public void OpenSettings()
     {
         if (settingsPanelIsOpen)
@@ -238,9 +298,13 @@ public class Menu : MonoBehaviour
 
     }
 
-    public void Inventory_()
+    public void Inventory_EquipButton()
     {
-
+        if (PlayerEquipment.instance.EquipToPlayer(inventory_SelectedEquip))
+        {
+            LoadInventory();
+            UpdateEquipedPanel();
+        }   
     }
 
     public void Settings_sound()
