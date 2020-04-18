@@ -40,17 +40,23 @@ public class Inventory : MonoBehaviour
     public void Remove(Item item)
     {
         items[items.IndexOf(item)].quantity -= item.quantity;
+    }
 
-        if (items[items.IndexOf(item)].quantity == 0)
-        {
-            items.Remove(item);
-        }
+    public int GetQuantity(Item item)
+    {
+        int index = items.IndexOf(item);
+        return items[index].quantity;
     }
 
     public void ObtainDrop(Item item)
     {
         OnDropObtain?.Invoke(item);
         Add(item);
+    }
+
+    public Item GetItemByID(int id)
+    {
+        return items[id - 1];
     }
 
     System.Collections.IEnumerator ReadFromStreamingAssets()
@@ -110,7 +116,7 @@ public class Inventory : MonoBehaviour
                     {
                         id = int.Parse(item[0]),
                         name = item[1],
-                        quantity = 0,
+                        quantity = 1,
                         description = item[2],
                     };
                     return itemToAdd;
