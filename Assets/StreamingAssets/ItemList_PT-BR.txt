@@ -1,0 +1,11 @@
+#Formato:
+#ID | Nome do item | Descrição do item | Equipavel?(S/N) | Vida | Ataque | Defesa | Velocidade | Resist. Queimadura | Resist. Veneno | Resist. Paralis. | Resist. Medo | $
+1|Drop 1|Item drop da area 1|N|$
+2|Drop 2|Item drop da area 2|N|$
+3|Drop 3|Item drop da area 3|N|$
+4|Drop 4|Item drop da area 4|N|$
+5|Drop 5|Item drop do mob 1 da area 1 |N|$
+6|Drop 6|Item drop do mob 2 da area 1|N|$
+7|Great magic sword|Espada do campeão da masmorra central|S|0|5|1|1|0|0|0|0|$
+8|Peitoral maneiro|Peitoral feito das lagrimas de seus inimigos|S|5|0|4|-3|5|0|0|0|$
+9|Calça furada|Calça utilizada pelo link no primeiro jogo|S|2|0|1|0|0|0|0|5|$

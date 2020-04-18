@@ -172,19 +172,23 @@ public class Menu : MonoBehaviour
 
         foreach (Item i in Inventory.instance.items)
         {
-            GameObject newItem = new GameObject(i.name);
-            var itemText = newItem.AddComponent<Text>();
-            var newButton = newItem.AddComponent<Button>();
+            if (i.quantity > 0)
+            {
 
-            itemText.text = $"{i.name} x{i.quantity}";
-            itemText.font = pixelFont;
-            itemText.color = Color.black;
-            itemText.rectTransform.sizeDelta = new Vector2(170, 35);
-            itemText.transform.SetParent(newButton.transform);
-            newButton.transform.SetParent(inventoryContentPanel.transform);
-            newButton.onClick.AddListener(() => ClickOnItem(i));
-            
-            LeanTween.scale(newItem, new Vector3(1, 1, 1), 0.1f);
+                GameObject newItem = new GameObject(i.name);
+                var itemText = newItem.AddComponent<Text>();
+                var newButton = newItem.AddComponent<Button>();
+
+                itemText.text = $"{i.name} x{i.quantity}";
+                itemText.font = pixelFont;
+                itemText.color = Color.black;
+                itemText.rectTransform.sizeDelta = new Vector2(170, 35);
+                itemText.transform.SetParent(newButton.transform);
+                newButton.transform.SetParent(inventoryContentPanel.transform);
+                newButton.onClick.AddListener(() => ClickOnItem(i));
+
+                LeanTween.scale(newItem, new Vector3(1, 1, 1), 0.1f);
+            }
         }
         LeanTween.scale(inventoryPanel, new Vector3(1, 1, 1), 0.1f);
         OnOpeningInventory?.Invoke();

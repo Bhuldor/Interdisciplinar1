@@ -4,6 +4,7 @@
     public int id;
     public int quantity;
     public string description = "Esse item pode ser usado para testar coisas.";
+    
 
     public override bool Equals(object other)
     {
@@ -24,5 +25,13 @@
     public override string ToString()
     {
         return name;
+    }
+
+    public void Clone(Item other)
+    {
+        id = other.id;
+        name = other.name;
+        description = other.description;
+        quantity = other.quantity;
     }
 }

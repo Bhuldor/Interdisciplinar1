@@ -5,13 +5,8 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    public enum DialogueType
-    {
-        chat,
-        store
-    };
-
     private Queue<string> sentences;
+    private string type;
 
     public Text nameText;
     public Text messageText;
@@ -19,13 +14,18 @@ public class DialogueManager : MonoBehaviour
 
     public float delayToOpenMessageBox = 1f;
     public float delayToWriteMessage = 1f;
+
+    public delegate void ChatFinished();
+    public static event ChatFinished onChatFinished;
+
     void Start()
     {
         sentences = new Queue<string>();
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue, string type)
     {
+        this.type = type;
         LeanTween.scale(messagePanel, new Vector3(1, 1, 1), delayToOpenMessageBox*0.2f);
         nameText.text = dialogue.name;
 
@@ -37,15 +37,16 @@ public class DialogueManager : MonoBehaviour
             sentences.Enqueue(sentence);
         }
 
-        DisplayNextSentence("chat");
+        DisplayNextSentence();
     }
 
-    public void DisplayNextSentence(string type)
+    public void DisplayNextSentence()
     {
         if (sentences.Count == 0)
         {
             EndDialogue();
-            if(type == "store") 
+            if (type == "store")
+                onChatFinished?.Invoke();
 
             return;
         }
