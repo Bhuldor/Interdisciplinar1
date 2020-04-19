@@ -13,8 +13,12 @@ public class StoreManager : MonoBehaviour
     public Text itemName;
     public Text itemDescription;
     public Text itemStatus;
+    public Text itemStatus2;
     public Text itemPrice1;
     public Text itemPrice2;
+
+    public VerifyEquipmentPower verifyEquip;
+
     public GameObject cantBuyMessage;
 
 
@@ -160,8 +164,9 @@ public class StoreManager : MonoBehaviour
         Equip equip = item as Equip;
         itemName.text = equip.name;
         itemDescription.text = equip.description;
-        itemStatus.text = $"Vida: {equip.health} \n Ataque: {equip.damage} \n Defesa: {equip.defense} \n Velocidade: {equip.speed}";
-        
+        itemStatus.text = $" Vida: {equip.health} \n Ataque: {equip.damage} \n Defesa: {equip.defense} \n Velocidade: {equip.speed}";
+        itemStatus2.text = $" Resistência a Queimação: {equip.burnResist}%\n Resistência a Veneno: {equip.poisonResist}%\n Resistência a Paralisia: {equip.paralyseResist}%\n Resistência a Medo: {equip.fearResist}%";
+        verifyEquip.VerifyEquipPower(equip);
         var playerHasPrice1 = Inventory.instance.GetQuantity(price1);
         itemPrice1.text = $"{price1.name} x{price1.quantity}";
         if (playerHasPrice1 >= price1.quantity)
@@ -225,4 +230,10 @@ public class StoreManager : MonoBehaviour
     {
         DialogueManager.onChatFinished -= displayItens;
     }
+
+    
+
+   
+
+    
 }
