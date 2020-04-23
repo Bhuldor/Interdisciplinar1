@@ -19,6 +19,15 @@ public class GameManager : MonoBehaviour{
 
     //Static
     public static int difficultLevel = 1;
+    public static bool gameSounds = true;
+    public static bool gameEffects = true;
+    public static bool gameMusics = true;
+    public enum Language
+    {
+        Portuguese,
+        English
+    }
+    public static Language selectedLanguage = Language.Portuguese;
 
     //Private
     private float positionX = 22;

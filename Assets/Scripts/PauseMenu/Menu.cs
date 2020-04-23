@@ -8,11 +8,7 @@ public class Menu : MonoBehaviour
     public GameObject menuPanel;
     public Sprite upArrowSprite;
     public Sprite downArrowSprite;
-    public Sprite yesSprite;
-    public Sprite noSprite;
-    public Image soundImage;
-    public Image musicImage;
-    public Image effectsImage;
+
     public GameObject mapPanel;
     public GameObject profilePanel1;
     public GameObject profilePanel2;
@@ -30,10 +26,6 @@ public class Menu : MonoBehaviour
     private bool profilePanelIsOpen = false;
   
     private bool settingsPanelIsOpen = false;
-
-    private bool soundIsOn = true;
-    private bool musicIsOn = true;
-    private bool effectsIsOn = true;
 
     private bool fading = false;
 
@@ -168,48 +160,5 @@ public class Menu : MonoBehaviour
     public void Profile_()
     {
 
-    }
-
-  
-
-    public void Settings_sound()
-    {
-        if (soundIsOn)
-        {
-            soundIsOn = false;
-            soundImage.sprite = noSprite;
-        }
-        else
-        {
-            soundIsOn = true;
-            soundImage.sprite = yesSprite;
-        }
-
-    }
-    public void Settings_music()
-    {
-        if (musicIsOn)
-        {
-            musicIsOn = false;
-            musicImage.sprite = noSprite;
-        }
-        else
-        {
-            musicIsOn = true;
-            musicImage.sprite = yesSprite;
-        }
-    }
-    public void Settings_effects()
-    {
-        if (effectsIsOn)
-        {
-            effectsIsOn = false;
-            effectsImage.sprite = noSprite;
-        }
-        else
-        {
-            effectsIsOn = true;
-            effectsImage.sprite = yesSprite;
-        }
     }
 }
