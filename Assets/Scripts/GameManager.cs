@@ -15,12 +15,28 @@ public class GameManager : MonoBehaviour{
     public ButtonAction pause;
     public Sprite pauseImg;
     public Sprite playImg;
+    public Font defauldFont;
+
+    //Static
+    public static int difficultLevel = 1;
+    public static bool gameSounds = true;
+    public static bool gameEffects = true;
+    public static bool gameMusics = true;
+    public enum Language
+    {
+        Portuguese,
+        English
+    }
+    public static Language selectedLanguage = Language.Portuguese;
 
     //Private
     private float positionX = 22;
     private float positionZ = 22;
 
     private bool gamePaused = false;
+
+    
+
 
     void Start(){
         Time.timeScale = 1f;
@@ -39,6 +55,7 @@ public class GameManager : MonoBehaviour{
     }
    
     void Update(){
+        /*
         if (gamePaused) {
             if (pause.action()){
                 Debug.Log("Play");
@@ -54,5 +71,6 @@ public class GameManager : MonoBehaviour{
                 Time.timeScale = 0f;
             }
         }
+        */
     }
 }

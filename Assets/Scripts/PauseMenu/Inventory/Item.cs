@@ -1,6 +1,6 @@
 ﻿public class Item
 {
-    public string name = "New Item";
+    public string name = "Item nulo";
     public int id;
     public int quantity;
     public string description = "Esse item pode ser usado para testar coisas.";

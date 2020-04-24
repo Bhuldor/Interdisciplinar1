@@ -13,16 +13,22 @@ public class StoreManager : MonoBehaviour
     public Text itemName;
     public Text itemDescription;
     public Text itemStatus;
+    public Text itemStatus2;
     public Text itemPrice1;
     public Text itemPrice2;
+
+    public VerifyEquipmentPower verifyEquip;
+
     public GameObject cantBuyMessage;
 
 
     private bool canBuy = false;
     private int selectedItem = 0;
+
+    private const int itemQuantity = 4;
     public void Awake()
     {
-        inventoryItens = new Item[3][] { new Item[3], new Item[3], new Item[3]};
+        inventoryItens = new Item[itemQuantity][] { new Item[3], new Item[3], new Item[3], new Item[3] };
     }
 
     public void Start()
@@ -47,6 +53,10 @@ public class StoreManager : MonoBehaviour
         Item item3_price1 = new Item();
         Item item3_price2 = new Item();
 
+        Equip item4 = new Equip();
+        Item item4_price1 = new Item();
+        Item item4_price2 = new Item();
+
         #endregion
         switch (difficultLevel)
         {
@@ -64,6 +74,10 @@ public class StoreManager : MonoBehaviour
                 item3_price1.Clone(Inventory.instance.GetItemByID(4));
                 item3_price2.Clone(Inventory.instance.GetItemByID(6));
 
+                item4.Clone((Equip)Inventory.instance.GetItemByID(10));
+                item4_price1.Clone(Inventory.instance.GetItemByID(5));
+                
+
                 #endregion
 
                 inventoryItens[0][0] = item1;
@@ -77,7 +91,7 @@ public class StoreManager : MonoBehaviour
                 inventoryItens[1][0] = item2; //Item 2
                 inventoryItens[1][0].quantity = 1;
                     inventoryItens[1][1] = item2_price1;
-                    inventoryItens[1][1].quantity = 2;
+                    inventoryItens[1][1].quantity = 1;
 
 
                 inventoryItens[2][0] = item3; //Item 3
@@ -86,6 +100,12 @@ public class StoreManager : MonoBehaviour
                     inventoryItens[2][1].quantity = 1;
                     inventoryItens[2][2] = item3_price2;
                     inventoryItens[2][2].quantity = 1;
+
+                inventoryItens[3][0] = item4; //Item 4
+                inventoryItens[3][0].quantity = 1;
+                    inventoryItens[3][1] = item4_price1;
+                    inventoryItens[3][1].quantity = 1;
+
 
                 break;
             case 2:
@@ -107,7 +127,7 @@ public class StoreManager : MonoBehaviour
                 Destroy(storeScrollPanel.transform.GetChild(a).gameObject);
             }
         }
-        for (int item = 0; item < 3; item++)
+        for (int item = 0; item < itemQuantity; item++)
         {
             if(inventoryItens[item][0] != null)
             {
@@ -144,8 +164,9 @@ public class StoreManager : MonoBehaviour
         Equip equip = item as Equip;
         itemName.text = equip.name;
         itemDescription.text = equip.description;
-        itemStatus.text = $"Vida: {equip.health} \n Ataque: {equip.damage} \n Defesa: {equip.defense} \n Velocidade: {equip.speed}";
-        
+        itemStatus.text = $" Vida: {equip.health} \n Ataque: {equip.damage} \n Defesa: {equip.defense} \n Velocidade: {equip.speed}";
+        itemStatus2.text = $" Resistência a Queimação: {equip.burnResist}%\n Resistência a Veneno: {equip.poisonResist}%\n Resistência a Paralisia: {equip.paralyseResist}%\n Resistência a Medo: {equip.fearResist}%";
+        verifyEquip.VerifyEquipPower(equip);
         var playerHasPrice1 = Inventory.instance.GetQuantity(price1);
         itemPrice1.text = $"{price1.name} x{price1.quantity}";
         if (playerHasPrice1 >= price1.quantity)
@@ -209,4 +230,10 @@ public class StoreManager : MonoBehaviour
     {
         DialogueManager.onChatFinished -= displayItens;
     }
+
+    
+
+   
+
+    
 }

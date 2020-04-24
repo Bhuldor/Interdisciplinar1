@@ -10,11 +10,13 @@ public class Inventory : MonoBehaviour
     public void Awake()
     {
         if(instance != null)
-        {
             Debug.LogWarning("Mais de uma instancia de inventario.");
-        }
+        
         instance = this;
         StartCoroutine(ReadFromStreamingAssets());
+        if (PlayerEquipment.instance != null)
+            Debug.LogWarning("Duas instancias de Player Equipment!");
+        PlayerEquipment.instance = new PlayerEquipment();
     }
 
     #endregion 
@@ -107,9 +109,10 @@ public class Inventory : MonoBehaviour
                         speed = int.Parse(item[7]),
                         burnResist = int.Parse(item[8]),
                         poisonResist = int.Parse(item[9]),
-                        paralyseResit = int.Parse(item[10]),
+                        paralyseResist = int.Parse(item[10]),
                         fearResist = int.Parse(item[11])
                     };
+                    equipToAdd.equipType = equipToAdd.GetEquipType(item[12]);
                     return equipToAdd;
                 case "N":
                     Item itemToAdd = new Item

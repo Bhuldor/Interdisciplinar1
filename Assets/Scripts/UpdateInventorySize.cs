@@ -7,7 +7,7 @@ public class UpdateInventorySize : MonoBehaviour
     private bool mustUpdate = false;
     private void Start()
     {
-        Menu.OnOpeningInventory += updateSize;
+        MenuInventory.OnOpeningInventory += updateSize;
     }
     private void FixedUpdate()
     {
@@ -23,6 +23,6 @@ public class UpdateInventorySize : MonoBehaviour
     }
     private void OnDestroy()
     {
-        Menu.OnOpeningInventory -= updateSize;
+        MenuInventory.OnOpeningInventory -= updateSize;
     }
 }
