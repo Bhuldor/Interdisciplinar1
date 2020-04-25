@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour{
     public static bool gameSounds = true;
     public static bool gameEffects = true;
     public static bool gameMusics = true;
+    
     public enum Language
     {
         Portuguese,
@@ -32,10 +33,13 @@ public class GameManager : MonoBehaviour{
     //Private
     private float positionX = 22;
     private float positionZ = 22;
-
+    private string itemListPath = System.IO.Path.Combine(Application.streamingAssetsPath, $"ItemList_{selectedLanguage}.json");
     private bool gamePaused = false;
 
-    
+    private void Awake()
+    {
+        StartInventory();
+    }
 
 
     void Start(){
@@ -51,6 +55,8 @@ public class GameManager : MonoBehaviour{
             } while (positionZ <= playerSafeSpawnZ && positionZ >= (playerSafeSpawnZ*-1));
 
             //EnemyController newEnemie = Instantiate(zombie, new Vector3(positionX, zombie.transform.position.y, positionZ), zombie.transform.rotation) as EnemyController;
+
+
         }
     }
    
@@ -72,5 +78,18 @@ public class GameManager : MonoBehaviour{
             }
         }
         */
+    }
+
+    private void StartInventory()
+    {
+        if (Inventory.instance != null)
+            Debug.LogWarning("Mais de uma instancia de inventario!");
+        Inventory.instance = new Inventory();
+        Inventory.instance.ReadJson(itemListPath);
+
+        
+        if (PlayerEquipment.instance != null)
+            Debug.LogWarning("Mais de uma instancia de Player Equipment!");
+        PlayerEquipment.instance = new PlayerEquipment();
     }
 }

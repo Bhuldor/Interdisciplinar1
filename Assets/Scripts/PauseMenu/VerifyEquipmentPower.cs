@@ -15,27 +15,27 @@ public class VerifyEquipmentPower : MonoBehaviour
     public Sprite spriteUp;
     public Sprite spriteDown;
 
-    public void VerifyEquipPower(Equip item)
+    public void VerifyEquipPower(Item item)
     {
         switch (item.equipType)
         {
-            case Equip.Type.armor:
+            case Item.Type.armor:
                 VerifyArmor(item);
                 break;
-            case Equip.Type.helmet:
+            case Item.Type.helmet:
                 VerifyHelmet(item);
                 break;
-            case Equip.Type.legs:
+            case Item.Type.legs:
                 VerifyLegs(item);
                 break;
-            case Equip.Type.sword:
-            case Equip.Type.axe:
-            case Equip.Type.dagger:
+            case Item.Type.sword:
+            case Item.Type.axe:
+            case Item.Type.dagger:
                 VerifyWeapon(item);
                 break;
         }
     }
-    private void VerifyArmor(Equip item)
+    private void VerifyArmor(Item item)
     {
         if (PlayerEquipment.instance.armor.health < item.health)
             ChangeImg(imgHealth, Color.green);
@@ -93,7 +93,7 @@ public class VerifyEquipmentPower : MonoBehaviour
         else
             imgFear.enabled = false;
     }
-    private void VerifyLegs(Equip item) {
+    private void VerifyLegs(Item item) {
         if (PlayerEquipment.instance.legs.health < item.health)
             ChangeImg(imgHealth, Color.green);
         else if (PlayerEquipment.instance.legs.health > item.health)
@@ -150,7 +150,7 @@ public class VerifyEquipmentPower : MonoBehaviour
         else
             imgFear.enabled = false;
     }
-    private void VerifyHelmet(Equip item) 
+    private void VerifyHelmet(Item item) 
     {
         if (PlayerEquipment.instance.helmet.health < item.health)
             ChangeImg(imgHealth, Color.green);
@@ -208,7 +208,7 @@ public class VerifyEquipmentPower : MonoBehaviour
         else
             imgFear.enabled = false;
     }
-    private void VerifyWeapon(Equip item) 
+    private void VerifyWeapon(Item item) 
     {
         if (PlayerEquipment.instance.weapon.health < item.health)
             ChangeImg(imgHealth, Color.green);

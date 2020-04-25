@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class StoreManager : MonoBehaviour
 {
-    private int difficultLevel = 1;
     Item[][] inventoryItens;
     public Font pixelFont;
 
@@ -33,6 +32,7 @@ public class StoreManager : MonoBehaviour
 
     public void Start()
     {
+        //Debug.Log(Inventory.instance);
         StoreInventory();
         DialogueManager.onChatFinished += displayItens;
     }
@@ -41,40 +41,40 @@ public class StoreManager : MonoBehaviour
     {
         #region Itens declaration
 
-        Equip item1 = new Equip();
+        Item item1 = new Item();
         Item item1_price1 = new Item();
         Item item1_price2 = new Item();
 
-        Equip item2 = new Equip();
+        Item item2 = new Item();
         Item item2_price1 = new Item();
         Item item2_price2 = new Item();
 
-        Equip item3 = new Equip();
+        Item item3 = new Item();
         Item item3_price1 = new Item();
         Item item3_price2 = new Item();
 
-        Equip item4 = new Equip();
+        Item item4 = new Item();
         Item item4_price1 = new Item();
         Item item4_price2 = new Item();
 
         #endregion
-        switch (difficultLevel)
+        switch (GameManager.difficultLevel)
         {
             case 1:
                 #region Cloning
-                item1.Clone((Equip)Inventory.instance.GetItemByID(7));
+                item1.Clone(Inventory.instance.GetItemByID(7));
                 item1_price1.Clone(Inventory.instance.GetItemByID(2));
                 item1_price2.Clone(Inventory.instance.GetItemByID(3));
 
-                item2.Clone((Equip)Inventory.instance.GetItemByID(9));
+                item2.Clone(Inventory.instance.GetItemByID(9));
                 item2_price1.Clone(Inventory.instance.GetItemByID(1));
                 //item2_price2.Clone();
 
-                item3.Clone((Equip)Inventory.instance.GetItemByID(8));
+                item3.Clone(Inventory.instance.GetItemByID(8));
                 item3_price1.Clone(Inventory.instance.GetItemByID(4));
                 item3_price2.Clone(Inventory.instance.GetItemByID(6));
 
-                item4.Clone((Equip)Inventory.instance.GetItemByID(10));
+                item4.Clone(Inventory.instance.GetItemByID(10));
                 item4_price1.Clone(Inventory.instance.GetItemByID(5));
                 
 
@@ -161,7 +161,7 @@ public class StoreManager : MonoBehaviour
     public void ClickOnItem(Item item, Item price1, Item price2, int index)
     {
         selectedItem = index;
-        Equip equip = item as Equip;
+        Item equip = item;
         itemName.text = equip.name;
         itemDescription.text = equip.description;
         itemStatus.text = $" Vida: {equip.health} \n Ataque: {equip.damage} \n Defesa: {equip.defense} \n Velocidade: {equip.speed}";
