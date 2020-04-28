@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class MenuInventory : MonoBehaviour
@@ -55,7 +53,7 @@ public class MenuInventory : MonoBehaviour
     public static event OpeningInventory OnOpeningInventory;
 
     public static bool inventoryPanelIsOpen = false;
-    private Equip inventory_SelectedEquip;
+    private Item inventory_SelectedEquip;
 
 
     public void OpenInventory()
@@ -212,18 +210,17 @@ public class MenuInventory : MonoBehaviour
     private void UpdateDescriptionpanel(Item item)
     {
         descriptionText.text = $"{item.name} \n {item.description}";
-        if (item is Equip)
+        if (item.equipType != Item.Type.item)
         {
-            Equip equip = item as Equip;
-            inventory_SelectedEquip = equip;
-            descriptionStatusText.text = $"Vida: {equip.health} \nAtaque: {equip.damage} \nDefesa: {equip.defense} \nVelocidade: {equip.speed}";
-            descriptionBurn.text = $"Resist. Queimar: {equip.burnResist}%";
-            descriptionPoison.text = $"Resist. Veneno: {equip.poisonResist}%";
-            descriptionParalyse.text = $"Resist. Paralisia: {equip.paralyseResist}%";
-            descriptionFear.text = $"Resist. Medo: {equip.fearResist}%";
+            inventory_SelectedEquip = item;
+            descriptionStatusText.text = $"Vida: {item.health} \nAtaque: {item.damage} \nDefesa: {item.defense} \nVelocidade: {item.speed}";
+            descriptionBurn.text = $"Resist. Queimar: {item.burnResist}%";
+            descriptionPoison.text = $"Resist. Veneno: {item.poisonResist}%";
+            descriptionParalyse.text = $"Resist. Paralisia: {item.paralyseResist}%";
+            descriptionFear.text = $"Resist. Medo: {item.fearResist}%";
             equipButton.enabled = true;
             equipButtonText.text = "Equipar";
-            verifyEquip.VerifyEquipPower(equip);
+            verifyEquip.VerifyEquipPower(item);
         }
         else
         {
@@ -247,7 +244,7 @@ public class MenuInventory : MonoBehaviour
     {
         if(PlayerEquipment.instance.helmet.name != "Item nulo")
         {
-            if (PlayerEquipment.instance.Unequip(Equip.Type.helmet))
+            if (PlayerEquipment.instance.Unequip(Item.Type.helmet))
             {
                 LoadInventory();
                 UpdateEquipedPanel();
@@ -258,7 +255,7 @@ public class MenuInventory : MonoBehaviour
     {
         if (PlayerEquipment.instance.armor.name != "Item nulo")
         {
-            if (PlayerEquipment.instance.Unequip(Equip.Type.armor))
+            if (PlayerEquipment.instance.Unequip(Item.Type.armor))
             {
                 LoadInventory();
                 UpdateEquipedPanel();
@@ -269,7 +266,7 @@ public class MenuInventory : MonoBehaviour
     {
         if (PlayerEquipment.instance.legs.name != "Item nulo")
         {
-            if (PlayerEquipment.instance.Unequip(Equip.Type.legs))
+            if (PlayerEquipment.instance.Unequip(Item.Type.legs))
             {
                 LoadInventory();
                 UpdateEquipedPanel();
@@ -280,7 +277,7 @@ public class MenuInventory : MonoBehaviour
     {
         if (PlayerEquipment.instance.weapon.name != "Item nulo")
         {
-            if (PlayerEquipment.instance.Unequip(Equip.Type.sword))
+            if (PlayerEquipment.instance.Unequip(Item.Type.sword))
             {
                 LoadInventory();
                 UpdateEquipedPanel();

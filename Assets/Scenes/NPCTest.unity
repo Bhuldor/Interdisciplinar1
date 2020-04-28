@@ -1914,7 +1914,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -23876.363, y: 241123.28}
+  m_AnchoredPosition: {x: -47398.008, y: 239942.34}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &180336715
@@ -6944,7 +6944,6 @@ GameObject:
   m_Component:
   - component: {fileID: 895417676}
   - component: {fileID: 895417675}
-  - component: {fileID: 895417678}
   m_Layer: 0
   m_Name: NPC_Manager
   m_TagString: Untagged
@@ -6983,18 +6982,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &895417678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 895417674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae6e2624f3a54cc4b9b0a94172e47b86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &910987437
 GameObject:
   m_ObjectHideFlags: 0
@@ -7177,7 +7164,7 @@ RectTransform:
   m_GameObject: {fileID: 961363481}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 382721391}
   - {fileID: 804869146}
@@ -10399,7 +10386,7 @@ RectTransform:
   m_GameObject: {fileID: 1654069411}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 955548}
   - {fileID: 961363482}
@@ -10966,7 +10953,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -36076.004, y: 2447503.2}
+  m_AnchoredPosition: {x: -97965, y: 2546065.2}
   m_SizeDelta: {x: 0, y: 294.7}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1786389943

@@ -9,7 +9,7 @@ public class TestEquipment : MonoBehaviour
     public int quantity = 1;
     public void AddTestItem()
     {
-        Equip test = new Equip
+        Item test = new Item
         {
             name = ItemName + " " + id,
             id = this.id,
