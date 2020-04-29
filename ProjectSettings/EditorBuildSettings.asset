@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenu.unity
     guid: eeed09e732898964db5136edea570fd7
   - enabled: 1
-    path: Assets/Scenes/NPCTest.unity
-    guid: 86fbfb4d778353644a92820e2dab7f87
+    path: Assets/Scenes/WorldScene.unity
+    guid: 44067b50eef54a24ba6b94fccc0d18bc
   m_configObjects: {}
