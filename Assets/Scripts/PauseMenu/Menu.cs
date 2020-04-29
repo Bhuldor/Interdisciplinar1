@@ -40,6 +40,7 @@ public class Menu : MonoBehaviour
     public void OpenCloseMenu()
     {
         StartCoroutine(FadePanel());
+        
         if (!menuIsOpen)
         {
             menuIsOpen = true;
@@ -81,8 +82,8 @@ public class Menu : MonoBehaviour
                     fading = false;
             }
         }
-        
-        
+
+        GameManager.PauseGame();
     }
     public void CloseOpenedPanels()
     {

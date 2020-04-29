@@ -28,17 +28,17 @@ public class StoreManager : MonoBehaviour
     public void Awake()
     {
         inventoryItens = new Item[itemQuantity][] { new Item[3], new Item[3], new Item[3], new Item[3] };
+        GameManager.onInventoryLoaded += StoreInventory;
     }
 
     public void Start()
     {
-        //Debug.Log(Inventory.instance);
-        StoreInventory();
         DialogueManager.onChatFinished += displayItens;
     }
 
     public void StoreInventory()
     {
+
         #region Itens declaration
 
         Item item1 = new Item();
@@ -148,7 +148,7 @@ public class StoreManager : MonoBehaviour
                 newButton.onClick.AddListener(() => ClickOnItem(i, price1, price2, index));
 
                 LeanTween.scale(newItem, new Vector3(1, 1, 1), 0.1f);
-                LeanTween.scale(storePanel, new Vector3(1, 1, 1), 0.1f);
+                LeanTween.scale(storePanel, new Vector3(2.5f, 2.5f, 2.5f), 0.1f);
 
                 if(index == 0)
                 {
@@ -203,7 +203,6 @@ public class StoreManager : MonoBehaviour
     {
         if (canBuy)
         {
-
             var item = inventoryItens[selectedItem][0];
             Inventory.instance.ObtainDrop(item);
             
@@ -229,6 +228,7 @@ public class StoreManager : MonoBehaviour
     private void OnDestroy()
     {
         DialogueManager.onChatFinished -= displayItens;
+        GameManager.onInventoryLoaded -= StoreInventory;
     }
 
     

@@ -225,6 +225,10 @@ public class MenuInventory : MonoBehaviour
         else
         {
             descriptionStatusText.text = $"Vida: -- \nAtaque: -- \nDefesa: -- \nVelocidade: --";
+            descriptionBurn.text = $"Resist. Queimar: {item.burnResist}%";
+            descriptionPoison.text = $"Resist. Veneno: {item.poisonResist}%";
+            descriptionParalyse.text = $"Resist. Paralisia: {item.paralyseResist}%";
+            descriptionFear.text = $"Resist. Medo: {item.fearResist}%";
             equipButton.enabled = false;
             equipButtonText.text = "";
             verifyEquip.HideImgs();

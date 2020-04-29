@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.Networking;
 
 public class GameManager : MonoBehaviour{
 
@@ -22,7 +23,8 @@ public class GameManager : MonoBehaviour{
     public static bool gameSounds = true;
     public static bool gameEffects = true;
     public static bool gameMusics = true;
-    
+    private static bool gamePaused = false;
+
     public enum Language
     {
         Portuguese,
@@ -30,11 +32,15 @@ public class GameManager : MonoBehaviour{
     }
     public static Language selectedLanguage = Language.Portuguese;
 
+    public delegate void InventoryLoaded();
+    public static event InventoryLoaded onInventoryLoaded;
+
     //Private
     private float positionX = 22;
     private float positionZ = 22;
-    private string itemListPath = System.IO.Path.Combine(Application.streamingAssetsPath, $"ItemList_{selectedLanguage}.json");
-    private bool gamePaused = false;
+    private string json = "";
+    
+    
 
     private void Awake()
     {
@@ -61,6 +67,7 @@ public class GameManager : MonoBehaviour{
     }
    
     void Update(){
+
         /*
         if (gamePaused) {
             if (pause.action()){
@@ -85,11 +92,58 @@ public class GameManager : MonoBehaviour{
         if (Inventory.instance != null)
             Debug.LogWarning("Mais de uma instancia de inventario!");
         Inventory.instance = new Inventory();
-        Inventory.instance.ReadJson(itemListPath);
+        string itemListPath = System.IO.Path.Combine(Application.streamingAssetsPath, $"ItemList_{selectedLanguage}.json");
+        if (itemListPath.Contains("://") || itemListPath.Contains(":///"))
+            StartCoroutine(RequestJson(itemListPath));
+        else
+        {
+            Inventory.instance.ReadJson(System.IO.File.ReadAllText(itemListPath));
+            StartPlayerEquipment();
+        }
+            
 
         
+
+    }
+
+     private IEnumerator RequestJson(string path)
+    {
+        UnityWebRequest webRequest = UnityWebRequest.Get(path);
+        yield return webRequest.SendWebRequest();
+        if (webRequest.isNetworkError)
+            Debug.LogError($"Erro ao tentar abrir arquivo de inventaro {webRequest.error}");
+        else
+            Inventory.instance.ReadJson(webRequest.downloadHandler.text);
+        StartPlayerEquipment();
+    }
+
+    private void StartPlayerEquipment()
+    {
         if (PlayerEquipment.instance != null)
             Debug.LogWarning("Mais de uma instancia de Player Equipment!");
         PlayerEquipment.instance = new PlayerEquipment();
+
+        StartCoroutine(CallEvent());
+    }
+
+    private IEnumerator CallEvent()
+    {
+        yield return new WaitForSeconds(1f);
+
+        onInventoryLoaded?.Invoke();
+
+    }
+
+    public static void PauseGame()
+    {
+        if (gamePaused)
+        {
+            gamePaused = false;
+        }
+        else
+        {
+            gamePaused = true;
+        }
+            
     }
 }

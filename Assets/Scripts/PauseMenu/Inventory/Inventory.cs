@@ -51,10 +51,8 @@ public class Inventory
         File.WriteAllText(path, json);
     }
 
-    public void ReadJson(string path)
+    public void ReadJson(string json)
     {
-        string json = File.ReadAllText(path);
-
         instance = JsonUtility.FromJson<Inventory>(json);
     }
 }
