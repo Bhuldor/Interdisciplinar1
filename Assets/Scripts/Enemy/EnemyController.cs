@@ -4,7 +4,8 @@ public class EnemyController : MonoBehaviour{
 
     [Header("Settings")]
     public float moveSpeed = 2.5f;
-    public PlayerController player;
+    public PlayerHealthManager player;
+    public int enemyThreat;
 
     //Privates
     private Rigidbody mRigidbody;
@@ -12,7 +13,7 @@ public class EnemyController : MonoBehaviour{
 
     void Start(){
         mRigidbody = GetComponent<Rigidbody>();
-        player = FindObjectOfType<PlayerController>();
+        player = FindObjectOfType<PlayerHealthManager>();
     }
    
     void Update(){
