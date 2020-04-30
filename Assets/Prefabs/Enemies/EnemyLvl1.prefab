@@ -328,6 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageToGive: 1
+  whoToHurt: Player
 --- !u!114 &1858195444647916783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,4 +399,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70df90b12f8cd4143a3dc4932a0ad61d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageToGive: 2
+  damageToGive: 1
+  whoToHurt: Player
