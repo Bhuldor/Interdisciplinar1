@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - WeaponSkill
   - NPC
+  - Weapon
   layers:
   - Default
   - TransparentFX

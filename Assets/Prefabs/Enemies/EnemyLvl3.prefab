@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageToGive: 3
+  whoToHurt: Player
 --- !u!114 &6259974649059245366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,7 +330,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70df90b12f8cd4143a3dc4932a0ad61d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageToGive: 2
+  damageToGive: 3
+  whoToHurt: Player
 --- !u!1 &6367782601131267480
 GameObject:
   m_ObjectHideFlags: 0

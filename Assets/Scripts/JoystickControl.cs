@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class JoystickControl : MonoBehaviour{
@@ -20,13 +21,17 @@ public class JoystickControl : MonoBehaviour{
     public GameObject swordSkill;
     public GameObject axeSkill;
     private GameObject weaponSkill;
-    
+
+    private Animator anim;
+    private bool isAttacking = false;
+
     //Dash
     public float dashSpeed;
     public float startDashTime;
     public TrailRenderer dashTrail;
 
     private float dashTime;
+    private float attackTime;
     private bool dashed = false;
     private bool skillUsed = false;
     private Vector3 direction;
@@ -34,6 +39,7 @@ public class JoystickControl : MonoBehaviour{
     private void Start(){
         dashTime = startDashTime;
         dashTrail.enabled = false;
+        anim = GetComponent<Animator>();
     }
 
     public void FixedUpdate(){
@@ -42,8 +48,14 @@ public class JoystickControl : MonoBehaviour{
         rb.constraints &= ~RigidbodyConstraints.FreezePosition;
 
         if (direction != new Vector3(0, 0, 0)){
+            anim.SetFloat("Speed", 1);
+            anim.SetBool("Attacking", false);
             transform.rotation = Quaternion.LookRotation(direction);
             transform.Translate(direction * speed * Time.deltaTime, Space.World);
+        }
+        else
+        {
+            anim.SetFloat("Speed", 0);
         }
 
         if (dashed){
@@ -63,11 +75,13 @@ public class JoystickControl : MonoBehaviour{
         }
 
         //BasicAttack
-        if (basicAttack.action()) { 
-            Debug.Log("Basic");
+        if (basicAttack.action()) {            
+            anim.SetBool("Attacking", true);
+            StartCoroutine(WaitAttackEnd(1f));
         }
         //SpecialAttack
         if (specialAttack.action()){
+            anim.SetBool("Attacking", false);
             if (isAxe){
                 //Procura por weaponSkill na cena para permitir a ação
                 if (GameObject.FindGameObjectsWithTag("WeaponSkill").Length == 0){
@@ -113,5 +127,10 @@ public class JoystickControl : MonoBehaviour{
         weaponSkill = Instantiate(axeSkill, new Vector3(transform.position.x, transform.position.y, transform.position.z), axeSkill.transform.rotation);
         weaponSkill.transform.parent = GameObject.Find("Player").transform;
         Destroy(weaponSkill, 5);
+    }
+
+    IEnumerator WaitAttackEnd(float waitTime){
+        yield return new WaitForSeconds(waitTime);
+        anim.SetBool("Attacking", false);
     }
 }

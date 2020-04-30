@@ -45,6 +45,10 @@ public class SpawnController : MonoBehaviour
             case 4:
                 enemyListSpawn = 3;
                 break;
+            default:
+                instanceEnemy = enemyList[0];
+                enemyListSpawn = 1;
+                break;
         }
 
         if (countList < enemyListSpawn){

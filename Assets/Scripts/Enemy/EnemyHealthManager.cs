@@ -14,11 +14,13 @@ public class EnemyHealthManager : MonoBehaviour{
    
     void Update(){
         if (currentHealth <= 0){
+            Debug.Log("Death Enemy");
             Destroy(gameObject);
         }
     }
 
     public void HurtEnemy(int damage){
         currentHealth -= damage;
+        Debug.Log(currentHealth);
     }
 }
