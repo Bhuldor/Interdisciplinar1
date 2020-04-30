@@ -142,13 +142,14 @@ public class StoreManager : MonoBehaviour
                 itemText.text = $"{i.name}";
                 itemText.font = pixelFont;
                 itemText.color = Color.black;
+                itemText.resizeTextForBestFit = true;
                 itemText.rectTransform.sizeDelta = new Vector2(170, 35);
                 itemText.transform.SetParent(newButton.transform);
                 newButton.transform.SetParent(storeScrollPanel.transform);
                 newButton.onClick.AddListener(() => ClickOnItem(i, price1, price2, index));
 
                 LeanTween.scale(newItem, new Vector3(1, 1, 1), 0.1f);
-                LeanTween.scale(storePanel, new Vector3(2.5f, 2.5f, 2.5f), 0.1f);
+                LeanTween.scale(storePanel, new Vector3(1, 1, 1), 0.1f);
 
                 if(index == 0)
                 {
