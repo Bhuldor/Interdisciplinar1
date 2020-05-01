@@ -5,6 +5,7 @@ public class PlayerHealthManager : MonoBehaviour{
     [Header("Settings")]
     public int startingHealth;
     public float flashLenght;
+    public HealthBar healthBar;
 
     //Privates
     private int currentHealth;
@@ -14,6 +15,7 @@ public class PlayerHealthManager : MonoBehaviour{
 
     void Start(){
         currentHealth = startingHealth;
+        healthBar.SetMaxHealth(startingHealth);
         rend = GetComponent<Renderer>();
         storedColor = rend.material.GetColor("_Color");
     }
@@ -33,6 +35,7 @@ public class PlayerHealthManager : MonoBehaviour{
 
     public void HurtPlayer(int damageAmount){
         currentHealth -= damageAmount;
+        healthBar.Sethealth(currentHealth);
         flashCounter = flashLenght;
         rend.material.SetColor("_Color", Color.white);
     }
