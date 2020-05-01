@@ -8,6 +8,7 @@ public class DamageController : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.gameObject.tag);
         if (other.gameObject.tag == "Weapon" && transform.tag == "Enemy"){
             transform.GetComponent<EnemyHealthManager>().HurtEnemy(other.gameObject.GetComponent<DamageController>().damageToGive);
         }
