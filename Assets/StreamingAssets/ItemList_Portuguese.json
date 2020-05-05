@@ -1,0 +1,12 @@
+{"items":[
+	{"name":"Drop 1","id":1,"quantity":1,"description":"Item drop da area 1","health":0,"damage":0,"defense":0,"speed":0,"burnResist":0,"poisonResist":0,"paralyseResist":0,"fearResist":0,"equipType":0},
+	{"name":"Drop 2","id":2,"quantity":1,"description":"Item drop da area 2","health":0,"damage":0,"defense":0,"speed":0,"burnResist":0,"poisonResist":0,"paralyseResist":0,"fearResist":0,"equipType":0},
+	{"name":"Drop 3","id":3,"quantity":1,"description":"Item drop da area 3","health":0,"damage":0,"defense":0,"speed":0,"burnResist":0,"poisonResist":0,"paralyseResist":0,"fearResist":0,"equipType":0},
+	{"name":"Drop 4","id":4,"quantity":1,"description":"Item drop da area 4","health":0,"damage":0,"defense":0,"speed":0,"burnResist":0,"poisonResist":0,"paralyseResist":0,"fearResist":0,"equipType":0},
+	{"name":"Drop 5","id":5,"quantity":1,"description":"Item drop do mob 1 da area 1 ","health":0,"damage":0,"defense":0,"speed":0,"burnResist":0,"poisonResist":0,"paralyseResist":0,"fearResist":0,"equipType":0},
+	{"name":"Drop 6","id":6,"quantity":1,"description":"Item drop do mob 2 da area 1","health":0,"damage":0,"defense":0,"speed":0,"burnResist":0,"poisonResist":0,"paralyseResist":0,"fearResist":0,"equipType":0},
+	{"name":"Great magic sword","id":7,"quantity":0,"description":"Espada do campeão da masmorra central","health":0,"damage":5,"defense":1,"speed":1,"burnResist":0,"poisonResist":0,"paralyseResist":0,"fearResist":0,"equipType":4},
+	{"name":"Peitoral maneiro","id":8,"quantity":0,"description":"Peitoral feito das lagrimas de seus inimigos","health":5,"damage":0,"defense":4,"speed":-3,"burnResist":5,"poisonResist":0,"paralyseResist":0,"fearResist":0,"equipType":2},
+	{"name":"Calça furada","id":9,"quantity":0,"description":"Calça utilizada pelo link no primeiro jogo","health":2,"damage":0,"defense":1,"speed":0,"burnResist":0,"poisonResist":0,"paralyseResist":0,"fearResist":5,"equipType":3},
+	{"name":"Capacete turbo","id":10,"quantity":0,"description":"Faz você parecer um power ranger","health":4,"damage":0,"defense":0,"speed":3,"burnResist":0,"poisonResist":1,"paralyseResist":2,"fearResist":1,"equipType":1}
+]}
