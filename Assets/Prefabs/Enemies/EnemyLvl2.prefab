@@ -191,6 +191,8 @@ MonoBehaviour:
   moveSpeed: 5
   player: {fileID: 0}
   enemyThreat: 2
+  distanceToChase: 5
+  initTransform: {fileID: 0}
 --- !u!114 &1293848420966376942
 MonoBehaviour:
   m_ObjectHideFlags: 0
