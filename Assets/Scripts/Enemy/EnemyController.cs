@@ -31,9 +31,6 @@ public class EnemyController : MonoBehaviour{
             transform.LookAt(player.transform.position);
             transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
         }else{
-            Debug.Log("Volta");
-            Debug.Log(initTransform.position);
-            Debug.Log(transform.position);
             transform.LookAt(initTransform.position);
             transform.position = Vector3.MoveTowards(transform.position, initTransform.position, moveSpeed * Time.deltaTime);
         }
