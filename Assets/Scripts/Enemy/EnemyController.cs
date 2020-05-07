@@ -6,21 +6,34 @@ public class EnemyController : MonoBehaviour{
     public float moveSpeed = 2.5f;
     public PlayerHealthManager player;
     public int enemyThreat;
+    public float distanceToChase;
+
+    public Transform initTransform;
+    private Transform target;
 
     //Privates
     private Rigidbody mRigidbody;
 
 
-    void Start(){
+    void Start(){        
         mRigidbody = GetComponent<Rigidbody>();
         player = FindObjectOfType<PlayerHealthManager>();
     }
    
-    void Update(){
-        transform.LookAt(player.transform.position);
-    }
-
     private void FixedUpdate(){
-        mRigidbody.velocity = transform.forward * moveSpeed;
+        //Procura o player no perimetro
+        //Se encontrar, vai até ele
+        //Se não achar, volta pra posição inicial
+
+        target = player.transform;
+
+        if (Vector3.Distance(transform.position, target.position) < distanceToChase){
+            transform.LookAt(player.transform.position);
+            transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+        }else{
+            transform.LookAt(initTransform.position);
+            transform.position = Vector3.MoveTowards(transform.position, initTransform.position, moveSpeed * Time.deltaTime);
+        }
+        //mRigidbody.velocity = transform.forward * moveSpeed;
     }
 }

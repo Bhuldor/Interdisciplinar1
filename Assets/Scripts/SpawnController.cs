@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnController : MonoBehaviour
 {
     public EnemyController[] enemyList;
-    public Vector3[] enemyCount;
+    public Transform[] enemyCount;
     public int threatLevel;
 
     private int countList;
@@ -70,7 +70,8 @@ public class SpawnController : MonoBehaviour
                         break;
                 }
 
-                instanceTempEnemy.transform.position = (Vector3)enemyCount[c + countSpawnVectorPos];
+                instanceTempEnemy.GetComponent<EnemyController>().initTransform = enemyCount[c + countSpawnVectorPos];
+                instanceTempEnemy.transform.position = enemyCount[c + countSpawnVectorPos].position;
                 instanceTempEnemy.transform.position = new Vector3(instanceTempEnemy.transform.position.x, instanceTempEnemy.transform.position.y, instanceTempEnemy.transform.position.z);
             }
             countSpawnVectorPos+= amountToSpawn;
