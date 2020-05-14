@@ -3,7 +3,17 @@ guid: cb05fe909a300b84dbb2f2c8ecb0d3d3
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Marrom tronco arvore.004
+    second: {fileID: 2100000, guid: 557282c0a755a284b9c72fb71aec3080, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Verde arvore.004
+    second: {fileID: 2100000, guid: bfa61823f2cf52549adbd3ecc72ac503, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
