@@ -4,21 +4,23 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    public Image menuArrowImage;
-    public GameObject menuPanel;
-    public Sprite upArrowSprite;
-    public Sprite downArrowSprite;
+    [SerializeField] private Image menuArrowImage;
+    [SerializeField] private GameObject menuPanel;
+    [SerializeField] private Animator MenuIconAnimator;
+    
+    [SerializeField] private CanvasGroup mapPanel;
+    [SerializeField] private CanvasGroup profilePanel1;
+    [SerializeField] private CanvasGroup profilePanel2;
+    [SerializeField] private CanvasGroup settingsPanel;
+    [SerializeField] private CanvasGroup inventoryPanel;
+    [SerializeField] private CanvasGroup descriptionPanel;
+    [SerializeField] private CanvasGroup equipedPanel;
 
-    public GameObject mapPanel;
-    public GameObject profilePanel1;
-    public GameObject profilePanel2;
- 
-    public GameObject settingsPanel;
-    public GameObject inventoryPanel;
-    public GameObject inventoryContentPanel;
-    public GameObject descriptionPanel;
-    public GameObject equipedPanel;
-    public Image fadePanel;
+    [SerializeField] private Image fadePanel;
+
+    [SerializeField] private MenuInventory menuInventory;
+
+    private int lastMenuOpened;
     
     private bool menuIsOpen = false;
 
@@ -29,7 +31,7 @@ public class Menu : MonoBehaviour
 
     private bool fading = false;
 
-    
+    public FadeEffect inventoryFadeEffect;
 
 
 
@@ -44,15 +46,35 @@ public class Menu : MonoBehaviour
         if (!menuIsOpen)
         {
             menuIsOpen = true;
-            menuArrowImage.sprite = upArrowSprite;
-            LeanTween.move(menuPanel, menuPanel.transform.position - new Vector3(0, Screen.height * 0.25f, 0), 0.1f);
+            MenuIconAnimator.Play("Open");
+            OpenlastMenu();
+            LeanTween.scaleX(menuPanel, 20f, 0.5f).setEaseInQuint();
         }
         else
         {
             menuIsOpen = false;
-            menuArrowImage.sprite = downArrowSprite;
-            LeanTween.move(menuPanel, menuPanel.transform.position + new Vector3(0, Screen.height * 0.25f, 0), 0.1f);
+            MenuIconAnimator.Play("Close");
+            LeanTween.scaleX(menuPanel, 0.0001f, 0.5f).setEaseOutQuint();
             CloseOpenedPanels();
+        }
+    }
+
+    private void OpenlastMenu()
+    {
+        switch (lastMenuOpened)
+        {
+            case 0:
+                OpenMap();
+                break;
+            case 1:
+                OpenProfile();
+                break;
+            case 2:
+                menuInventory.OpenInventory();
+                break;
+            case 3:
+                OpenSettings();
+                break;
         }
     }
 
@@ -89,53 +111,79 @@ public class Menu : MonoBehaviour
     {
         if (mapPanelIsOpen)
         {
-            LeanTween.scale(mapPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
+            lastMenuOpened = 0;
+            LeanTween.alphaCanvas(mapPanel, 0, 0.1f);
+            //LeanTween.scale(mapPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
             mapPanelIsOpen = false;
         }
         if (profilePanelIsOpen)
         {
-            LeanTween.scale(profilePanel1, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
-            LeanTween.scale(profilePanel2, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
+            lastMenuOpened = 1;
+            LeanTween.alphaCanvas(profilePanel1, 0, 0.1f);
+            LeanTween.alphaCanvas(profilePanel2, 0, 0.1f);
+            //LeanTween.scale(profilePanel1, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
+            //LeanTween.scale(profilePanel2, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
             profilePanelIsOpen = false;
         }
             
         if (MenuInventory.inventoryPanelIsOpen)
         {
-            LeanTween.scale(inventoryPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
-            LeanTween.scale(descriptionPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
-            LeanTween.scale(equipedPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
+            lastMenuOpened = 2;
+            LeanTween.alphaCanvas(inventoryPanel, 0, 0.1f);
+            LeanTween.alphaCanvas(descriptionPanel, 0, 0.1f);
+            LeanTween.alphaCanvas(equipedPanel, 0, 0.1f);
+            //LeanTween.scale(inventoryPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
+            //LeanTween.scale(descriptionPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
+            //LeanTween.scale(equipedPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
+            inventoryFadeEffect.Activated = false;
             MenuInventory.inventoryPanelIsOpen = false;
         }
         if (settingsPanelIsOpen)
         {
-            LeanTween.scale(settingsPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
+            lastMenuOpened = 3;
+            LeanTween.alphaCanvas(settingsPanel, 0, 0.1f);
+            //LeanTween.scale(settingsPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
             settingsPanelIsOpen = false;
         }
     }
 
     public void OpenMap()
     {
+        /*
         if (mapPanelIsOpen)
         {
             CloseOpenedPanels();
             return;
         }
-        CloseOpenedPanels();
-        mapPanelIsOpen = true;
-        LeanTween.scale(mapPanel, new Vector3(1, 1, 1), 0.1f);
+        */
+        if (!mapPanelIsOpen)
+        {
+            CloseOpenedPanels();
+            mapPanelIsOpen = true;
+            LeanTween.alphaCanvas(mapPanel, 1, 0.1f);
+        }
+        //LeanTween.scale(mapPanel, new Vector3(1, 1, 1), 0.1f);
     }
 
     public void OpenProfile()
     {
+        /*
         if (profilePanelIsOpen)
         {
             CloseOpenedPanels();
             return;
         }
-        CloseOpenedPanels();
-        profilePanelIsOpen = true;
-        LeanTween.scale(profilePanel1, new Vector3(1, 1, 1), 0.1f);
-        LeanTween.scale(profilePanel2, new Vector3(1, 1, 1), 0.1f);
+        */
+        if (!profilePanelIsOpen)
+        {
+            CloseOpenedPanels();
+            profilePanelIsOpen = true;
+            LeanTween.alphaCanvas(profilePanel1, 1, 0.1f);
+            LeanTween.alphaCanvas(profilePanel2, 1, 0.1f);
+        }
+
+        //LeanTween.scale(profilePanel1, new Vector3(1, 1, 1), 0.1f);
+        //LeanTween.scale(profilePanel2, new Vector3(1, 1, 1), 0.1f);
     }
 
 
@@ -143,14 +191,21 @@ public class Menu : MonoBehaviour
   
     public void OpenSettings()
     {
+        /*
         if (settingsPanelIsOpen)
         {
             CloseOpenedPanels();
             return;
         }
-        CloseOpenedPanels();
-        settingsPanelIsOpen = true;
-        LeanTween.scale(settingsPanel, new Vector3(1, 1, 1), 0.1f);
+        */
+        if (!settingsPanelIsOpen)
+        {
+            CloseOpenedPanels();
+            settingsPanelIsOpen = true;
+            LeanTween.alphaCanvas(settingsPanel, 1, 0.1f);
+        }
+            
+        //LeanTween.scale(settingsPanel, new Vector3(1, 1, 1), 0.1f);
     }
 
     public void Map_()
