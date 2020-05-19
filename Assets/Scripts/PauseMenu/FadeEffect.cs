@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class FadeEffect : MonoBehaviour
@@ -8,14 +9,18 @@ public class FadeEffect : MonoBehaviour
     private Text textToFade;
     private Image imageToFade;
     [SerializeField] private Color targetColorAlpha;
-    [SerializeField] [Range(0.01f, 0.2f)] private float duration = 0.025f;
+    [SerializeField] [Range(0.01f, 2f)] private float duration = 0.025f;
     public bool Activated = false;
-    bool change = false;
-    float t = 0f;
+    private bool change = false;
+    private float t = 0f;
+    public bool transparent = false;
+    public bool onGoing = false;
+    private RectTransform textRectTransform;
 
     private enum Mode
     {
         TextColor,
+        TextAlpha,
         ImageAlpha
     }
     private enum Start
@@ -46,11 +51,14 @@ public class FadeEffect : MonoBehaviour
                 else
                     Debug.LogError("Image component not found!");
                 break;
-
+            case Mode.TextAlpha:
+                textRectTransform = GetComponent<RectTransform>();
+                break;
         }
 
         if (start == Start.OnAwake)
             inEffect = true;
+
     }
 
     void Update()
@@ -75,7 +83,29 @@ public class FadeEffect : MonoBehaviour
                     //imageToFade.CrossFadeAlpha(targetColorAlpha.a, duration, true);
                     //Work on it when i need
                     break;
+                case Mode.TextAlpha:
+                    if (!transparent)
+                    {
+                        LeanTween.alphaText(textRectTransform, targetColorAlpha.a, duration );
+                    }
+                    else
+                    {
+                        LeanTween.alphaText(textRectTransform, 1, duration);
+                    }
+                    StartCoroutine(waitTextAlpha());
+                    break;
             }
+        }
+    }
+
+    IEnumerator waitTextAlpha()
+    {
+        if (!onGoing)
+        {
+            onGoing = true;
+            yield return new WaitForSeconds(duration*2);
+            transparent = !transparent;
+            onGoing = false;
         }
     }
     private void OnEnable()
