@@ -70,10 +70,10 @@ public class Menu : MonoBehaviour
                 OpenProfile();
                 break;
             case 2:
-                menuInventory.OpenInventory();
+                OpenProfile();
                 break;
             case 3:
-                OpenSettings();
+                OpenProfile();
                 break;
         }
     }
@@ -112,37 +112,37 @@ public class Menu : MonoBehaviour
         if (mapPanelIsOpen)
         {
             lastMenuOpened = 0;
+            LeanTween.scale(mapPanel.gameObject, new Vector3(0.0001f, 0.0001f, 0.0001f), 0f);
             LeanTween.alphaCanvas(mapPanel, 0, 0.1f);
-            //LeanTween.scale(mapPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
             mapPanelIsOpen = false;
         }
         if (profilePanelIsOpen)
         {
             lastMenuOpened = 1;
+            LeanTween.scale(profilePanel1.gameObject, new Vector3(0.0001f, 0.0001f, 0.0001f), 0f);
+            LeanTween.scale(profilePanel2.gameObject, new Vector3(0.0001f, 0.0001f, 0.0001f), 0f);
             LeanTween.alphaCanvas(profilePanel1, 0, 0.1f);
             LeanTween.alphaCanvas(profilePanel2, 0, 0.1f);
-            //LeanTween.scale(profilePanel1, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
-            //LeanTween.scale(profilePanel2, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
             profilePanelIsOpen = false;
         }
             
         if (MenuInventory.inventoryPanelIsOpen)
         {
             lastMenuOpened = 2;
+            LeanTween.scale(inventoryPanel.gameObject, new Vector3(0.0001f, 0.0001f, 0.0001f), 0f);
+            LeanTween.scale(descriptionPanel.gameObject, new Vector3(0.0001f, 0.0001f, 0.0001f), 0f);
+            LeanTween.scale(equipedPanel.gameObject, new Vector3(0.0001f, 0.0001f, 0.0001f), 0f);
             LeanTween.alphaCanvas(inventoryPanel, 0, 0.1f);
             LeanTween.alphaCanvas(descriptionPanel, 0, 0.1f);
             LeanTween.alphaCanvas(equipedPanel, 0, 0.1f);
-            //LeanTween.scale(inventoryPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
-            //LeanTween.scale(descriptionPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
-            //LeanTween.scale(equipedPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
             inventoryFadeEffect.Activated = false;
             MenuInventory.inventoryPanelIsOpen = false;
         }
         if (settingsPanelIsOpen)
         {
             lastMenuOpened = 3;
+            LeanTween.scale(settingsPanel.gameObject, new Vector3(0.0001f, 0.0001f, 0.0001f), 0f);
             LeanTween.alphaCanvas(settingsPanel, 0, 0.1f);
-            //LeanTween.scale(settingsPanel, new Vector3(0.0001f, 0.0001f, 0.0001f), 0.1f);
             settingsPanelIsOpen = false;
         }
     }
@@ -160,9 +160,10 @@ public class Menu : MonoBehaviour
         {
             CloseOpenedPanels();
             mapPanelIsOpen = true;
+            LeanTween.scale(mapPanel.gameObject, new Vector3(1, 1, 1), 0f);
             LeanTween.alphaCanvas(mapPanel, 1, 0.1f);
         }
-        //LeanTween.scale(mapPanel, new Vector3(1, 1, 1), 0.1f);
+        
     }
 
     public void OpenProfile()
@@ -178,12 +179,12 @@ public class Menu : MonoBehaviour
         {
             CloseOpenedPanels();
             profilePanelIsOpen = true;
+            LeanTween.scale(profilePanel1.gameObject, new Vector3(1, 1, 1), 0f);
+            LeanTween.scale(profilePanel2.gameObject, new Vector3(1, 1, 1), 0f);
             LeanTween.alphaCanvas(profilePanel1, 1, 0.1f);
             LeanTween.alphaCanvas(profilePanel2, 1, 0.1f);
         }
 
-        //LeanTween.scale(profilePanel1, new Vector3(1, 1, 1), 0.1f);
-        //LeanTween.scale(profilePanel2, new Vector3(1, 1, 1), 0.1f);
     }
 
 
@@ -202,10 +203,11 @@ public class Menu : MonoBehaviour
         {
             CloseOpenedPanels();
             settingsPanelIsOpen = true;
+            LeanTween.scale(settingsPanel.gameObject, new Vector3(1, 1, 1), 0f);
             LeanTween.alphaCanvas(settingsPanel, 1, 0.1f);
         }
             
-        //LeanTween.scale(settingsPanel, new Vector3(1, 1, 1), 0.1f);
+        
     }
 
     public void Map_()

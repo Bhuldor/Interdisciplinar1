@@ -102,10 +102,10 @@ public class MenuInventory : MonoBehaviour
     }
     private void LoadInventory()
     {
+        LeanTween.scale(descriptionPanel, new Vector3(1, 1, 1), 0f);
+        LeanTween.scale(equipedPanel, new Vector3(1, 1, 1), 0f);
         LeanTween.alphaCanvas(equipedCanvas, 1, 0.1f);
         LeanTween.alphaCanvas(descriptionCanvas, 1, 0.1f);
-        //LeanTween.scale(descriptionPanel, new Vector3(1, 1, 1), 0.1f);
-        //LeanTween.scale(equipedPanel, new Vector3(1, 1, 1), 0.1f);
         int count = inventoryContentPanel.transform.childCount;
         if (count != 0)
         {
@@ -148,13 +148,14 @@ public class MenuInventory : MonoBehaviour
                         ClickOnItem(i);
                     }
 
-                    LeanTween.scale(newItem, new Vector3(1f, 1f, 1f), 0.1f);
+                    LeanTween.scale(newItem, new Vector3(1f, 1f, 1f), 0f);
                 }
 
             }
             OnOpeningInventory?.Invoke(count, sizeY);
+            LeanTween.scale(inventoryPanel, new Vector3(1, 1, 1), 0f);
             LeanTween.alphaCanvas(inventoryCanvas, 1, 0.1f);
-            //LeanTween.scale(inventoryPanel, new Vector3(1, 1, 1), 0.1f);
+            
             if (count == 0)
             {
                 descriptionLifeText.text = "";
