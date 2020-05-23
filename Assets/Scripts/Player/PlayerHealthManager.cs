@@ -5,13 +5,14 @@ public class PlayerHealthManager : MonoBehaviour{
     [Header("Settings")]
     public int startingHealth;
     public float flashLenght;
-    public HealthBar healthBar;
+    
 
     //Privates
     private int currentHealth;
     private float flashCounter;
     private Renderer rend;
     private Color storedColor;
+    [SerializeField] private HealthBar healthBar;
 
     void Start(){
         currentHealth = startingHealth;
