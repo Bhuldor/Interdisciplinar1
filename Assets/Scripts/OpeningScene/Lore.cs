@@ -9,7 +9,7 @@ public class Lore : MonoBehaviour
     [SerializeField] private CanvasGroup blackPanel;
     [TextArea(3, 25)][SerializeField] private string[] lore;
     private Queue<string> sentences;
-    private bool completedText = false;
+    protected bool completedText = false;
     private Tutorial tutorial;    
     private bool startedTutorial = false;
     
@@ -31,7 +31,6 @@ public class Lore : MonoBehaviour
             StopAllCoroutines();
             if(sentences.Count != 0)
             {
-                completedText = false;
                 StartCoroutine(TypeLetters(sentences.Dequeue(), true));
             }
             else
@@ -46,6 +45,7 @@ public class Lore : MonoBehaviour
 
     protected IEnumerator TypeLetters(string sentence, bool useUpdate)
     {
+        completedText = false;
         messageText.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
@@ -71,10 +71,9 @@ public class Lore : MonoBehaviour
 
         }
         yield return new WaitForSeconds(3f);
-        if (useUpdate)
-            completedText = true;
-        else
-            StopAllCoroutines();
+        completedText = true;
+        
+            //StopAllCoroutines();
         
     }
 }
