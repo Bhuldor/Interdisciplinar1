@@ -12,7 +12,7 @@ public class Tutorial : Lore
     [SerializeField] private GameObject healthBar;
     [SerializeField] private GameObject leftControl;
     [SerializeField] private GameObject rightControl;
-    [SerializeField] private GameObject MenuButton;
+    [SerializeField] private GameObject menuButton;
 
     private RectTransform messageTextRT;
     private RectTransform messageTextPanelRT;
@@ -32,28 +32,25 @@ public class Tutorial : Lore
     {
         messageText.resizeTextForBestFit = true;
         messageText.alignment = TextAnchor.MiddleCenter;
-
-
-        //HealthBar();
-        LeftController();
+        
+        HealthBar();
     }
 
     private void LoadLevelScene()
     {
-        //SceneManager.LoadScene(2);
-        Debug.Log("oie");
+        SceneManager.LoadScene(1);
     }
 
     private void HealthBar()
     {
-        healthBar.SetActive(true);
         LeanTween.alphaCanvas(healthBar.GetComponent<CanvasGroup>(), 1f, 2f);
         StartCoroutine(
             waitAndExecuteLambda(2f, () => {
 
                 messageTextPanel.SetActive(true);
-                messageTextRT.sizeDelta = new Vector2(healthBar.GetComponent<RectTransform>().sizeDelta.x * 4, healthBar.GetComponent<RectTransform>().sizeDelta.y * 5);
-                StartCoroutine(TypeLetters("Se atente a sua barra de vida \n Se ela chegar a 0, sua aventura chegara ao fim!", false));
+                var rt = healthBar.GetComponent<RectTransform>();
+                messageTextRT.sizeDelta = new Vector2(rt.sizeDelta.x * 4, rt.sizeDelta.y * 8);
+                StartCoroutine(TypeLetters("Se atente a sua barra de vida \n Se ela chegar a 0, \nsua aventura chegara ao fim!", false));
                 messageText.transform.position = healthBar.transform.position - new Vector3(-healthBar.transform.position.x, healthBar.transform.position.y / 10, 0);
 
                 messageTextPanelRT.sizeDelta = messageTextRT.sizeDelta;
@@ -67,15 +64,77 @@ public class Tutorial : Lore
 
     private void LeftController()
     {
-        leftControl.SetActive(true);
         LeanTween.alphaCanvas(leftControl.GetComponent<CanvasGroup>(), 1f, 2f);
         StartCoroutine(
             waitAndExecuteLambda(2f, () =>
             {
                 messageTextPanel.SetActive(true);
-                messageTextRT.sizeDelta = new Vector2(leftControl.GetComponent<RectTransform>().sizeDelta.x * 6, leftControl.GetComponent<RectTransform>().sizeDelta.y);
+                var rt = leftControl.GetComponent<RectTransform>();
+                messageTextRT.sizeDelta = new Vector2(rt.sizeDelta.x * 6, rt.sizeDelta.y);
                 StartCoroutine(TypeLetters("Utilize esse controle para movimentar Kaluana.", false));
-                messageText.transform.position = leftControl.transform.position + new Vector3(+leftControl.transform.position.x * 2, +leftControl.transform.position.y * 1.5f, 0);
+                messageText.transform.position = leftControl.transform.position + new Vector3(+leftControl.transform.position.x * 2, +leftControl.transform.position.y * 1f, 0);
+
+                messageTextPanelRT.sizeDelta = messageTextRT.sizeDelta;
+                messageTextPanel.transform.position = messageText.transform.position;
+
+            },
+            () => RightController()
+            )
+        );
+    }
+    private void RightController()
+    {
+        LeanTween.alphaCanvas(rightControl.GetComponent<CanvasGroup>(), 1f, 2f);
+        StartCoroutine(
+            waitAndExecuteLambda(2f, () =>
+            {
+                messageTextPanel.SetActive(true);
+                var rt = rightControl.GetComponent<RectTransform>();
+                messageTextRT.sizeDelta = new Vector2(rt.sizeDelta.x * 10, rt.sizeDelta.y * 14);
+                StartCoroutine(TypeLetters("Utilize o botão principal com icone de sua arma para atacar.", false));
+                messageText.transform.position = rightControl.transform.position - new Vector3(-rightControl.transform.position.x / 8, rightControl.transform.position.y / 4, 0);
+
+                messageTextPanelRT.sizeDelta = messageTextRT.sizeDelta;
+                messageTextPanel.transform.position = messageText.transform.position;
+            },
+            () => StartCoroutine(
+                    waitAndExecuteLambda(0f, () =>
+                    {
+                        messageTextPanel.SetActive(true);
+                        StartCoroutine(TypeLetters("O botão menor é sua habilidade única da arma:\nAdaga realiza uma esquiva.\nEspada cria um escudo.\nMachado lhe da roubo de vida.", false));
+
+                        messageTextPanelRT.sizeDelta = messageTextRT.sizeDelta;
+                        messageTextPanel.transform.position = messageText.transform.position;
+                    },
+                    () => StartCoroutine(
+                            waitAndExecuteLambda(0f, () =>
+                            {
+                                messageTextPanel.SetActive(true);
+                                StartCoroutine(TypeLetters("Os dois botões em cinza serão liberados com o decorrer do jogo.", false));
+
+                                messageTextPanelRT.sizeDelta = messageTextRT.sizeDelta;
+                                messageTextPanel.transform.position = messageText.transform.position;
+                            },
+                            () => Menu()
+                            ) // 3º Lambda ending
+                         ) // 3º CoroutineEnding   
+                    ) // 2º Lambda ending
+                ) // 2º CoroutineEnding
+            )// 1º Lambda Ending
+        ); // 1º CoroutineEnding
+    }
+
+    private void Menu()
+    {
+        LeanTween.alphaCanvas(menuButton.GetComponent<CanvasGroup>(), 1f, 2f);
+        StartCoroutine(
+            waitAndExecuteLambda(2f, () =>
+            {
+                messageTextPanel.SetActive(true);
+                var rt = menuButton.GetComponent<RectTransform>();
+                messageTextRT.sizeDelta = new Vector2(rt.sizeDelta.x * 10, rt.sizeDelta.y * 6);
+                StartCoroutine(TypeLetters("Toque no pergaminho para pausar e abrir o menu.", false));
+                messageText.transform.position = menuButton.transform.position - new Vector3(0, +menuButton.transform.position.y / 8, 0);
 
                 messageTextPanelRT.sizeDelta = messageTextRT.sizeDelta;
                 messageTextPanel.transform.position = messageText.transform.position;
@@ -97,7 +156,6 @@ public class Tutorial : Lore
         messageTextPanel.SetActive(false);
         messageText.text = "";
         yield return new WaitForSeconds(1f);
-        Debug.Log("nextFunction");
         nextFunction();
     }
 }
