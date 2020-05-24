@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class Tutorial : Lore
 {
-    //[SerializeField] private Text messageText;
+    
+
     [SerializeField] private GameObject messageTextPanel;
     [SerializeField] private GameObject healthBar;
     [SerializeField] private GameObject leftControl;
@@ -16,6 +17,11 @@ public class Tutorial : Lore
 
     private RectTransform messageTextRT;
     private RectTransform messageTextPanelRT;
+
+    private bool menuButtonOk = false;
+    private bool healthBarOk = false;
+    private bool leftControlOk = false;
+    private bool rightControlOk = false;
     
     void Start()
     {
@@ -30,27 +36,32 @@ public class Tutorial : Lore
 
     public void StartTutorial()
     {
+        messageText.text = "";
         messageText.resizeTextForBestFit = true;
         messageText.alignment = TextAnchor.MiddleCenter;
         
         HealthBar();
+        skipTutorialText.text = "Pular tutorial >>";
+        skipTutorial.gameObject.SetActive(true);
+        skipTutorial.onClick.AddListener(() => StartGame());
     }
 
     private void LoadLevelScene()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     private void HealthBar()
     {
-        LeanTween.alphaCanvas(healthBar.GetComponent<CanvasGroup>(), 1f, 2f);
+        LeanTween.alphaCanvas(healthBar.GetComponent<CanvasGroup>(), 1f, 1f);
+        healthBarOk = true;
         StartCoroutine(
-            waitAndExecuteLambda(2f, () => {
+            waitAndExecuteLambda(1f, () => {
 
                 messageTextPanel.SetActive(true);
                 var rt = healthBar.GetComponent<RectTransform>();
                 messageTextRT.sizeDelta = new Vector2(rt.sizeDelta.x * 4, rt.sizeDelta.y * 8);
-                StartCoroutine(TypeLetters("Se atente a sua barra de vida \n Se ela chegar a 0, \nsua aventura chegara ao fim!", false));
+                StartCoroutine(TypeLetters("Vida do personagem.", false));
                 messageText.transform.position = healthBar.transform.position - new Vector3(-healthBar.transform.position.x, healthBar.transform.position.y / 10, 0);
 
                 messageTextPanelRT.sizeDelta = messageTextRT.sizeDelta;
@@ -64,9 +75,10 @@ public class Tutorial : Lore
 
     private void LeftController()
     {
-        LeanTween.alphaCanvas(leftControl.GetComponent<CanvasGroup>(), 1f, 2f);
+        LeanTween.alphaCanvas(leftControl.GetComponent<CanvasGroup>(), 1f, 1f);
+        leftControlOk = true;
         StartCoroutine(
-            waitAndExecuteLambda(2f, () =>
+            waitAndExecuteLambda(1f, () =>
             {
                 messageTextPanel.SetActive(true);
                 var rt = leftControl.GetComponent<RectTransform>();
@@ -84,9 +96,10 @@ public class Tutorial : Lore
     }
     private void RightController()
     {
-        LeanTween.alphaCanvas(rightControl.GetComponent<CanvasGroup>(), 1f, 2f);
+        LeanTween.alphaCanvas(rightControl.GetComponent<CanvasGroup>(), 1f, 1f);
+        rightControlOk = true;
         StartCoroutine(
-            waitAndExecuteLambda(2f, () =>
+            waitAndExecuteLambda(1f, () =>
             {
                 messageTextPanel.SetActive(true);
                 var rt = rightControl.GetComponent<RectTransform>();
@@ -106,18 +119,7 @@ public class Tutorial : Lore
                         messageTextPanelRT.sizeDelta = messageTextRT.sizeDelta;
                         messageTextPanel.transform.position = messageText.transform.position;
                     },
-                    () => StartCoroutine(
-                            waitAndExecuteLambda(0f, () =>
-                            {
-                                messageTextPanel.SetActive(true);
-                                StartCoroutine(TypeLetters("Os dois botões em cinza serão liberados com o decorrer do jogo.", false));
-
-                                messageTextPanelRT.sizeDelta = messageTextRT.sizeDelta;
-                                messageTextPanel.transform.position = messageText.transform.position;
-                            },
-                            () => Menu()
-                            ) // 3º Lambda ending
-                         ) // 3º CoroutineEnding   
+                    () => Menu()
                     ) // 2º Lambda ending
                 ) // 2º CoroutineEnding
             )// 1º Lambda Ending
@@ -126,9 +128,10 @@ public class Tutorial : Lore
 
     private void Menu()
     {
-        LeanTween.alphaCanvas(menuButton.GetComponent<CanvasGroup>(), 1f, 2f);
+        LeanTween.alphaCanvas(menuButton.GetComponent<CanvasGroup>(), 1f, 1f);
+        menuButtonOk = true;
         StartCoroutine(
-            waitAndExecuteLambda(2f, () =>
+            waitAndExecuteLambda(1f, () =>
             {
                 messageTextPanel.SetActive(true);
                 var rt = menuButton.GetComponent<RectTransform>();
@@ -140,11 +143,40 @@ public class Tutorial : Lore
                 messageTextPanel.transform.position = messageText.transform.position;
 
             },
-            () => LoadLevelScene()
+            () => StartGame()
             )
         );
     }
 
+    public void StartGame()
+    {
+        if(!healthBarOk)
+            LeanTween.alphaCanvas(healthBar.GetComponent<CanvasGroup>(), 1f, 1f);
+        if(!leftControlOk)
+            LeanTween.alphaCanvas(leftControl.GetComponent<CanvasGroup>(), 1f, 1f);
+        if(!rightControlOk)
+            LeanTween.alphaCanvas(rightControl.GetComponent<CanvasGroup>(), 1f, 1f);
+        if(!menuButtonOk)
+            LeanTween.alphaCanvas(menuButton.GetComponent<CanvasGroup>(), 1f, 1f);
+        skipTutorial.gameObject.SetActive(false);
+        StopAllCoroutines();
+        StartCoroutine(
+            waitAndExecuteLambda(0f, () =>
+            {
+                messageTextPanel.SetActive(true);
+                var camera = Camera.main;
+                messageTextRT.sizeDelta = new Vector2(camera.pixelWidth /1.5f, camera.pixelHeight /2);
+                StartCoroutine(TypeLetters("Capitulo 1: O início da jornada.", false));
+                messageText.transform.position = new Vector2(camera.pixelWidth / 2, camera.pixelHeight / 2); ;
+
+                messageTextPanelRT.sizeDelta = messageTextRT.sizeDelta;
+                messageTextPanel.transform.position = messageText.transform.position;
+
+            },
+            () => LoadLevelScene()
+            )
+        );
+    }
     IEnumerator waitAndExecuteLambda(float timeToWait, Action lambda, Action nextFunction)
     {
         yield return new WaitForSeconds(timeToWait);
@@ -155,7 +187,7 @@ public class Tutorial : Lore
         }
         messageTextPanel.SetActive(false);
         messageText.text = "";
-        yield return new WaitForSeconds(1f);
+        //yield return new WaitForSeconds(0.1f);
         nextFunction();
     }
 }
