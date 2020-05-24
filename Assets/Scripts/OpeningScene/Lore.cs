@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Lore : MonoBehaviour
 {
+    [SerializeField] protected Button skipTutorial;
+    [SerializeField] protected Text skipTutorialText;
+
     [SerializeField] protected Text messageText;
     [SerializeField] private CanvasGroup blackPanel;
     [TextArea(3, 25)][SerializeField] private string[] lore;
@@ -22,6 +25,9 @@ public class Lore : MonoBehaviour
             sentences.Enqueue(lore);
         }
         StartCoroutine(TypeLetters(sentences.Dequeue(), true));
+        skipTutorialText.text = "Pular introdução >>";
+        skipTutorial.gameObject.SetActive(true);
+        skipTutorial.onClick.AddListener(() => SkipLore());
     }
 
     void Update()
@@ -35,7 +41,6 @@ public class Lore : MonoBehaviour
             }
             else
             {
-                messageText.text = "";
                 startedTutorial = true;
                 tutorial.StartTutorial();
             }
@@ -43,6 +48,14 @@ public class Lore : MonoBehaviour
         }
     }
 
+    private void SkipLore()
+    {
+        skipTutorial.onClick.RemoveListener(() => SkipLore());
+        StopAllCoroutines();
+        startedTutorial = true;
+        LeanTween.alphaCanvas(blackPanel, 0f, 0.5f);
+        tutorial.StartTutorial();
+    }
     protected IEnumerator TypeLetters(string sentence, bool useUpdate)
     {
         completedText = false;
@@ -68,9 +81,10 @@ public class Lore : MonoBehaviour
             {
                 LeanTween.alphaCanvas(blackPanel, 0f, 3f);
             }
-
+            yield return new WaitForSeconds(2f);
         }
-        yield return new WaitForSeconds(3f);
+        else
+            yield return new WaitForSeconds(1f);
         completedText = true;
         
             //StopAllCoroutines();
