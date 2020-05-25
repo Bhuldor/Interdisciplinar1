@@ -1,24 +1,45 @@
-﻿using System;
+﻿
+using System.Diagnostics;
 using UnityEngine;
 
 public class PlayerStatus : CharacterStatus
 {
-    private float actualExp;
-    private float nextLevelExp;
-    private int level;
+    public float actualExp;
+    public float nextLevelExp;
+    public float actualLevelExp;
+    public int level;
     private int constitution;
     private int strength;
     private int resistance;
     private int agility;
     private int availablePoints;
-    private float fireResistance;
+    private float burnResistance;
     private float poisonResistance;
     private float paralyseResistance;
     private float fearResistance;
+
+    public delegate void LevelUp();
+    public static event LevelUp OnLevelUp;
+
+    public bool giveExp = false;
     
 
+    public void Start()
+    {
+        level = 1;
+        actualLevelExp = 0;
+        nextLevelExp = 100;
+        constitution = 1;
+        strength = 1;
+        resistance = 1;
+        agility = 1;
+        hitPoints = 25;
+        attack = 5;
+        defense = 5;
+        speed = 5;
+    }
     public PlayerStatus(float atk, float def, float spd, float hp, float actualExp, float nextLevelExp, int lvl, int constitution, int strength, 
-        int resistance, int agility, int availablePoints, float fireResist, float poisonResist, float paralyseResist, float fearResist) : base(atk, def, spd, hp)
+        int resistance, int agility, int availablePoints, float burnResist, float poisonResist, float paralyseResist, float fearResist) : base(atk, def, spd, hp)
     {
         attack = atk;
         defense = def;
@@ -32,24 +53,36 @@ public class PlayerStatus : CharacterStatus
         this.resistance = resistance;
         this.agility = agility;
         this.availablePoints = availablePoints;
-        this.fireResistance = fireResist;
+        this.burnResistance = burnResist;
         this.poisonResistance = poisonResist;
         this.paralyseResistance = paralyseResist;
         this.fearResistance = fearResist;
+        
+    }
+
+    private void Update()
+    {
+        if (giveExp)
+        {
+            ObtainExp(15f);
+            giveExp = false;
+        }
     }
 
     public float getActualExp() { return actualExp; }
     public float getNextLevelExp() { return nextLevelExp; }
+    public float getActualLevelExp() { return actualLevelExp; }
     public int getLevel() { return level; }
     public int getConstitution() { return constitution; }
     public int getStrength() { return strength; }
     public int getResistance() { return resistance; }
     public int getAgility() { return agility; }
     public int getAvailablePoints() { return availablePoints; }
-    public float getFireResistance() { return fireResistance; }
+    public float getBurnResistance() { return burnResistance; }
     public float getPoisonResistance() { return poisonResistance; }
     public float getParalyseResistance() { return paralyseResistance; }
     public float getFearResistance() { return fearResistance; }
+
 
     /*
     public void setConstitution(int constitution) { this.constitution = constitution; }
@@ -66,7 +99,8 @@ public class PlayerStatus : CharacterStatus
     public void levelUp(){
         level++;
         hitPoints += 5;
-        nextLevelExp *= 1.5f;
+        actualLevelExp = nextLevelExp;
+        nextLevelExp = (nextLevelExp * getMultiplier());
 
         if (level % 3 == 0)
         {
@@ -84,8 +118,11 @@ public class PlayerStatus : CharacterStatus
         if (level % 5 == 0)
             availablePoints += 2;
         else
-            availablePoints++; 
+            availablePoints++;
+
+        OnLevelUp?.Invoke();
     }
+
 
     public void levelUpAttribute(int whichAtt){
         //whichAtt representa a escolha do atributo ao player passar de nível
@@ -105,7 +142,7 @@ public class PlayerStatus : CharacterStatus
             case 2:
                 defense += 2;
                 hitPoints += 2;
-                fireResistance += 2;
+                burnResistance += 2;
                 poisonResistance += 0.5f;
                 paralyseResistance += 0.5f;
                 fearResistance += 0.5f;
@@ -127,5 +164,52 @@ public class PlayerStatus : CharacterStatus
             return true;
         }
         return false;
+    }
+
+    public float getTotalDefense()
+    {
+        return defense + PlayerEquipment.instance.GetTotalEquipedDefense();
+    }
+    public float getTotalHP()
+    {
+        return hitPoints + PlayerEquipment.instance.GetTotalEquipedHealth();
+    }
+    public float getTotalAttack()
+    {
+        return attack + PlayerEquipment.instance.GetTotalEquipedDamage();
+    }
+    public float getTotalSpeed()
+    {
+        return speed + PlayerEquipment.instance.GetTotalEquipedSpeed();
+    }
+    public float getTotalFireResist()
+    {
+        return burnResistance + PlayerEquipment.instance.GetTotalEquipedBurnResist();
+    }
+    public float getTotalPoisonResist()
+    {
+        return poisonResistance + PlayerEquipment.instance.GetTotalEquipedPoisonResist();
+    }
+    public float getTotalParalyseResist()
+    {
+        return poisonResistance + PlayerEquipment.instance.GetTotalEquipedParalyseResist();
+    }
+    public float getTotalFearResist()
+    {
+        return fearResistance + PlayerEquipment.instance.GetTotalEquipedFearResist();
+    }
+
+    private float getMultiplier()
+    {
+        if (level == 2)
+            return 2.2f;
+        else if (level == 3)
+            return 1.5f;
+        else if (level > 3 && level < 17)
+            return 1.3f;
+        else if (level > 16 && level < 26)
+            return 1.2f;
+        else
+            return 1.1f;
     }
 }

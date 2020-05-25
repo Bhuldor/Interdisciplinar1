@@ -19,6 +19,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private Image fadePanel;
 
     [SerializeField] private MenuInventory menuInventory;
+    [SerializeField] private MenuProfile menuProfile;
 
     private int lastMenuOpened;
     
@@ -183,6 +184,7 @@ public class Menu : MonoBehaviour
             LeanTween.scale(profilePanel2.gameObject, new Vector3(1, 1, 1), 0f);
             LeanTween.alphaCanvas(profilePanel1, 1, 0.1f);
             LeanTween.alphaCanvas(profilePanel2, 1, 0.1f);
+            menuProfile.OpenProfile();
         }
 
     }
