@@ -38,7 +38,7 @@ public class PlayerEquipment
                 weapon.Clone(equipment);
                 break;
             default:
-                Debug.LogWarning("Equipamento passado não possui tipo compativel.");
+                Debug.LogError("Equipamento passado não possui tipo compativel.");
                 return false;
         }
         if (returnToInventory.name != "Item nulo")
@@ -53,5 +53,38 @@ public class PlayerEquipment
         Item equipNulo = new Item();
         equipNulo.equipType = type;
         return EquipToPlayer(equipNulo);
+    }
+
+    public int GetTotalEquipedDefense()
+    {
+        return helmet.defense + armor.defense + legs.defense + weapon.defense;
+    }
+    public int GetTotalEquipedDamage()
+    {
+        return helmet.damage + armor.damage + legs.damage + weapon.damage;
+    }
+    public int GetTotalEquipedSpeed()
+    {
+        return helmet.speed + armor.speed + legs.speed + weapon.speed;
+    }
+    public int GetTotalEquipedHealth()
+    {
+        return helmet.health + armor.health + legs.health + weapon.health;
+    }
+    public int GetTotalEquipedBurnResist()
+    {
+        return helmet.burnResist + armor.burnResist + legs.burnResist + weapon.burnResist;
+    }
+    public int GetTotalEquipedFearResist()
+    {
+        return helmet.fearResist + armor.fearResist + legs.fearResist + weapon.fearResist;
+    }
+    public int GetTotalEquipedParalyseResist()
+    {
+        return helmet.paralyseResist + armor.paralyseResist + legs.paralyseResist + weapon.paralyseResist;
+    }
+    public int GetTotalEquipedPoisonResist()
+    {
+        return helmet.poisonResist + armor.poisonResist + legs.poisonResist + weapon.poisonResist;
     }
 }
