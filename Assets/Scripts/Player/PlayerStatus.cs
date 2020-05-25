@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerStatus : CharacterStatus
 {
-    public float actualExp;
-    public float nextLevelExp;
-    public float actualLevelExp;
-    public int level;
+    private float actualExp;
+    private float nextLevelExp;
+    private float actualLevelExp;
+    private int level;
     private int constitution;
     private int strength;
     private int resistance;
@@ -21,8 +21,6 @@ public class PlayerStatus : CharacterStatus
     public delegate void LevelUp();
     public static event LevelUp OnLevelUp;
 
-    public bool giveExp = false;
-    
 
     public void Start()
     {
@@ -58,15 +56,6 @@ public class PlayerStatus : CharacterStatus
         this.paralyseResistance = paralyseResist;
         this.fearResistance = fearResist;
         
-    }
-
-    private void Update()
-    {
-        if (giveExp)
-        {
-            ObtainExp(76000f);
-            giveExp = false;
-        }
     }
 
     public float getActualExp() { return actualExp; }
