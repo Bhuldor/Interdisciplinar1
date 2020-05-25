@@ -48,7 +48,8 @@ public class Menu : MonoBehaviour
         {
             menuIsOpen = true;
             MenuIconAnimator.Play("Open");
-            OpenlastMenu();
+            CloseOpenedPanels();
+            OpenMap();
             LeanTween.scaleX(menuPanel, 20f, 0.5f).setEaseInQuint();
         }
         else
@@ -57,25 +58,6 @@ public class Menu : MonoBehaviour
             MenuIconAnimator.Play("Close");
             LeanTween.scaleX(menuPanel, 0.0001f, 0.5f).setEaseOutQuint();
             CloseOpenedPanels();
-        }
-    }
-
-    private void OpenlastMenu()
-    {
-        switch (lastMenuOpened)
-        {
-            case 0:
-                OpenMap();
-                break;
-            case 1:
-                OpenProfile();
-                break;
-            case 2:
-                OpenProfile();
-                break;
-            case 3:
-                OpenProfile();
-                break;
         }
     }
 

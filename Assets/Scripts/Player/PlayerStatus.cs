@@ -64,7 +64,7 @@ public class PlayerStatus : CharacterStatus
     {
         if (giveExp)
         {
-            ObtainExp(15f);
+            ObtainExp(76000f);
             giveExp = false;
         }
     }
@@ -121,6 +121,9 @@ public class PlayerStatus : CharacterStatus
             availablePoints++;
 
         OnLevelUp?.Invoke();
+
+        if (actualExp > nextLevelExp)
+            ObtainExp(0);
     }
 
 
@@ -132,14 +135,17 @@ public class PlayerStatus : CharacterStatus
         //3 - Agility
         switch (whichAtt){
             case 0:
+                constitution++;
                 hitPoints += 5;
                 poisonResistance += 2;
                 break;
             case 1:
+                strength++;
                 attack += 3;
                 fearResistance += 2;
                 break;
             case 2:
+                resistance++;
                 defense += 2;
                 hitPoints += 2;
                 burnResistance += 2;
@@ -148,11 +154,13 @@ public class PlayerStatus : CharacterStatus
                 fearResistance += 0.5f;
                 break;
             case 3:
+                agility++;
                 speed += 3;
                 attack += 1;
                 paralyseResistance += 2;
                 break;
         }
+        availablePoints--;
     }
 
     public bool ObtainExp(float obtainedExp)

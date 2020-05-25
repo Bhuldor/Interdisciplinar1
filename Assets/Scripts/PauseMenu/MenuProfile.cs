@@ -7,6 +7,10 @@ public class MenuProfile : MonoBehaviour
     [SerializeField] private PlayerStatus player;
     [SerializeField] private Text availablePointsText;
     [SerializeField] private Text attributes;
+    [SerializeField] private GameObject ButtonCon;
+    [SerializeField] private GameObject ButtonStr;
+    [SerializeField] private GameObject ButtonRes;
+    [SerializeField] private GameObject ButtonAgl;
 
     [SerializeField] private Text level;
     [SerializeField] private Text expNeeded;
@@ -48,6 +52,7 @@ public class MenuProfile : MonoBehaviour
     }
     public void OpenProfile()
     {
+        availablePoints = player.getAvailablePoints();
         availablePointsText.text = $"Pontos disponiveis: {availablePoints}";
         attributes.text = $"Constituição: {player.getConstitution()} \n\nForça: {player.getStrength()} \n\nResistência: {player.getResistance()} \n\nAgilidade: {player.getAgility()}";
         
@@ -76,6 +81,27 @@ public class MenuProfile : MonoBehaviour
         fearResist.text = $"Resistência ao medo: {resist}% ( +{PlayerEquipment.instance.GetTotalEquipedFearResist()} )";
         levelUpbar.SetNewLevel(player.getActualLevelExp(), player.getNextLevelExp());
         levelUpbar.SetExpValue(player.getActualExp());
+
+        if(availablePoints > 0)
+        {
+            ButtonCon.SetActive(true);
+            ButtonRes.SetActive(true);
+            ButtonStr.SetActive(true);
+            ButtonAgl.SetActive(true);
+        }
+        else
+        {
+            ButtonCon.SetActive(false);
+            ButtonRes.SetActive(false);
+            ButtonStr.SetActive(false);
+            ButtonAgl.SetActive(false);
+        }
+    }
+
+    public void UpAtribbute(int attribute)
+    {
+        player.levelUpAttribute(attribute);
+        OpenProfile();
     }
 
     public void getAvailablePoints()
