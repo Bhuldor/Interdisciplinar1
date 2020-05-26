@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour{
 
     //Static
     public static int difficultLevel = 1;
+    public static int bossesDefeated = 0; //Used by StoreManager
     public static bool gameSounds = true;
     public static bool gameEffects = true;
     public static bool gameMusics = true;

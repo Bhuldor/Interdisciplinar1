@@ -3,74 +3,109 @@ using UnityEngine.UI;
 
 public class MenuInventory : MonoBehaviour
 {
-    public Text descriptionText;
-    public Text descriptionStatusText;
-    public Text descriptionBurn;
-    public Text descriptionPoison;
-    public Text descriptionParalyse;
-    public Text descriptionFear;
-    public Text equipButtonText;
+    [SerializeField] private Text descriptionText;
+    [SerializeField] private Text descriptionLifeText;
+    [SerializeField] private Text descriptionDamageText;
+    [SerializeField] private Text descriptionDefenseText;
+    [SerializeField] private Text descriptionSpeedText;
+    [SerializeField] private Text descriptionBurn;
+    [SerializeField] private Text descriptionPoison;
+    [SerializeField] private Text descriptionParalyse;
+    [SerializeField] private Text descriptionFear;
+    [SerializeField] private Text equipButtonText;
 
-    public Text helmetEquipedName;
-    public Text helmetEquipedStatus;
-    public Text helmetEquipedBurn;
-    public Text helmetEquipedPoison;
-    public Text helmetEquipedParalyse;
-    public Text helmetEquipedFear;
+    [SerializeField] private Text helmetEquipedName;
+    [SerializeField] private Text helmetEquipedLife;
+    [SerializeField] private Text helmetEquipedDamage;
+    [SerializeField] private Text helmetEquipedDefense;
+    [SerializeField] private Text helmetEquipedSpeed;
+    [SerializeField] private Text helmetEquipedBurn;
+    [SerializeField] private Text helmetEquipedPoison;
+    [SerializeField] private Text helmetEquipedParalyse;
+    [SerializeField] private Text helmetEquipedFear;
 
-    public Text armorEquipedName;
-    public Text armorEquipedStatus;
-    public Text armorEquipedBurn;
-    public Text armorEquipedPoison;
-    public Text armorEquipedParalyse;
-    public Text armorEquipedFear;
+    [SerializeField] private Text armorEquipedName;
+    [SerializeField] private Text armorEquipedLife;
+    [SerializeField] private Text armorEquipedDamage;
+    [SerializeField] private Text armorEquipedDefense;
+    [SerializeField] private Text armorEquipedSpeed;
+    [SerializeField] private Text armorEquipedBurn;
+    [SerializeField] private Text armorEquipedPoison;
+    [SerializeField] private Text armorEquipedParalyse;
+    [SerializeField] private Text armorEquipedFear;
 
-    public Text legsEquipedName;
-    public Text legsEquipedStatus;
-    public Text legsEquipedBurn;
-    public Text legsEquipedPoison;
-    public Text legsEquipedParalyse;
-    public Text legsEquipedFear;
+    [SerializeField] private Text legsEquipedName;
+    [SerializeField] private Text legsEquipedLife;
+    [SerializeField] private Text legsEquipedDamage;
+    [SerializeField] private Text legsEquipedDefense;
+    [SerializeField] private Text legsEquipedSpeed;
+    [SerializeField] private Text legsEquipedBurn;
+    [SerializeField] private Text legsEquipedPoison;
+    [SerializeField] private Text legsEquipedParalyse;
+    [SerializeField] private Text legsEquipedFear;
 
-    public Text weaponEquipedName;
-    public Text weaponEquipedStatus;
-    public Text weaponEquipedBurn;
-    public Text weaponEquipedPoison;
-    public Text weaponEquipedParalyse;
-    public Text weaponEquipedFear;
+    [SerializeField] private Text weaponEquipedName;
+    [SerializeField] private Text weaponEquipedLife;
+    [SerializeField] private Text weaponEquipedDamage;
+    [SerializeField] private Text weaponEquipedDefense;
+    [SerializeField] private Text weaponEquipedSpeed;
+    [SerializeField] private Text weaponEquipedBurn;
+    [SerializeField] private Text weaponEquipedPoison;
+    [SerializeField] private Text weaponEquipedParalyse;
+    [SerializeField] private Text weaponEquipedFear;
 
-    public GameObject inventoryPanel;
-    public GameObject inventoryContentPanel;
-    public GameObject descriptionPanel;
-    public GameObject equipedPanel;
-    public Menu menu;
+    [SerializeField] private GameObject inventoryPanel;
+    [SerializeField] private GameObject inventoryContentPanel;
+    [SerializeField] private GameObject descriptionPanel;
+    [SerializeField] private GameObject equipedPanel;
+    [SerializeField] private Menu menu;
 
+    public FadeEffect fadeEffect;
     public VerifyEquipmentPower verifyEquip;
 
-    public Button equipButton;
+    [SerializeField] private Button equipButton;
     
-    public delegate void OpeningInventory();
+    public delegate void OpeningInventory(int childCount, float childSizeY);
     public static event OpeningInventory OnOpeningInventory;
 
     public static bool inventoryPanelIsOpen = false;
     private Item inventory_SelectedEquip;
 
+    [SerializeField] private  GameObject prefabListItem;
 
+    private bool shouldUpdate = false;
+
+    private CanvasGroup equipedCanvas;
+    private CanvasGroup descriptionCanvas;
+    private CanvasGroup inventoryCanvas;
+
+    private void Start()
+    {
+        equipedCanvas = equipedPanel.gameObject.GetComponent<CanvasGroup>();
+        descriptionCanvas = descriptionPanel.gameObject.GetComponent<CanvasGroup>();
+        inventoryCanvas = inventoryPanel.gameObject.GetComponent<CanvasGroup>();
+    }
     public void OpenInventory()
     {
-        if (inventoryPanelIsOpen)
+
+        //{
+        //    menu.CloseOpenedPanels();
+        //    return;
+        //}
+        if (!inventoryPanelIsOpen)
         {
             menu.CloseOpenedPanels();
-            return;
+            inventoryPanelIsOpen = true;
+            fadeEffect.Activated = true;
+            LoadInventory();
         }
-        menu.CloseOpenedPanels();
-        inventoryPanelIsOpen = true;
-        LoadInventory();
     }
     private void LoadInventory()
     {
-        LeanTween.scale(descriptionPanel, new Vector3(1, 1, 1), 0.1f);
-        LeanTween.scale(equipedPanel, new Vector3(1, 1, 1), 0.1f);
+        LeanTween.scale(descriptionPanel, new Vector3(1, 1, 1), 0f);
+        LeanTween.scale(equipedPanel, new Vector3(1, 1, 1), 0f);
+        LeanTween.alphaCanvas(equipedCanvas, 1, 0.1f);
+        LeanTween.alphaCanvas(descriptionCanvas, 1, 0.1f);
         int count = inventoryContentPanel.transform.childCount;
         if (count != 0)
         {
@@ -81,44 +116,61 @@ public class MenuInventory : MonoBehaviour
         }
 
         count = 0;
+        shouldUpdate = true;
 
-        foreach (Item i in Inventory.instance.items)
+    }
+
+    private void FixedUpdate()
+    {
+        if (shouldUpdate)
         {
-            if (i.quantity > 0)
+            var inventoryRT = inventoryContentPanel.GetComponent<RectTransform>();
+            float sizeY = inventoryRT.rect.width / 8;
+            float sizeX = inventoryRT.rect.width;
+            int count = 0;
+            foreach (Item i in Inventory.instance.items)
             {
-                count++;
-                GameObject newItem = new GameObject(i.name);
-                var itemText = newItem.AddComponent<Text>();
-                var newButton = newItem.AddComponent<Button>();
-
-                itemText.text = $"{i.name} x{i.quantity}";
-                itemText.font = FindObjectOfType<GameManager>().defauldFont;
-                itemText.color = Color.black;
-                itemText.rectTransform.sizeDelta = new Vector2(170, 35);
-                itemText.transform.SetParent(newButton.transform);
-                newButton.transform.SetParent(inventoryContentPanel.transform);
-                newButton.onClick.AddListener(() => ClickOnItem(i));
-
-                if (count == 1)
+                if (i.quantity > 0)
                 {
-                    ClickOnItem(i);
+                    count++;
+                    GameObject newItem = Instantiate(prefabListItem);
+                    var itemText = newItem.GetComponentInChildren<Text>();
+                    var newButton = newItem.GetComponent<Button>();
+                    newButton.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(sizeX, sizeY);
+                    itemText.text = $"{i.name} x{i.quantity}";
+                    //itemText.font = FindObjectOfType<GameManager>().defauldFont;
+                    itemText.color = Color.black;
+                    newItem.transform.SetParent(inventoryContentPanel.transform);
+                    newButton.onClick.AddListener(() => ClickOnItem(i));
+
+                    if (count == 1)
+                    {
+                        ClickOnItem(i);
+                    }
+
+                    LeanTween.scale(newItem, new Vector3(1f, 1f, 1f), 0f);
                 }
 
-                LeanTween.scale(newItem, new Vector3(1, 1, 1), 0.1f);
             }
-        }
-        LeanTween.scale(inventoryPanel, new Vector3(1, 1, 1), 0.1f);
-        OnOpeningInventory?.Invoke();
-        if (count == 0)
-        {
-            descriptionStatusText.text = "";
-            descriptionText.text = "";
-            equipButtonText.text = "";
-            descriptionBurn.text = "";
-            descriptionFear.text = "";
-            descriptionParalyse.text = "";
-            descriptionPoison.text = "";
-            verifyEquip.HideImgs();
+            OnOpeningInventory?.Invoke(count, sizeY);
+            LeanTween.scale(inventoryPanel, new Vector3(1, 1, 1), 0f);
+            LeanTween.alphaCanvas(inventoryCanvas, 1, 0.1f);
+            
+            if (count == 0)
+            {
+                descriptionLifeText.text = "";
+                descriptionDamageText.text = "";
+                descriptionDefenseText.text = "";
+                descriptionSpeedText.text = "";
+                descriptionText.text = "";
+                equipButtonText.text = "";
+                descriptionBurn.text = "";
+                descriptionFear.text = "";
+                descriptionParalyse.text = "";
+                descriptionPoison.text = "";
+                verifyEquip.HideImgs();
+            }
+            shouldUpdate = false;
         }
     }
 
@@ -133,7 +185,11 @@ public class MenuInventory : MonoBehaviour
         if (PlayerEquipment.instance.helmet.name != "Item nulo")
         {
             helmetEquipedName.text = $"Capacete: {PlayerEquipment.instance.helmet.name}";
-            helmetEquipedStatus.text = $"Vida: { PlayerEquipment.instance.helmet.health} | Ataque: { PlayerEquipment.instance.helmet.damage} | Defesa: { PlayerEquipment.instance.helmet.defense} | Veloc.: { PlayerEquipment.instance.helmet.speed}";
+            helmetEquipedLife.text = $"{ PlayerEquipment.instance.helmet.health}";
+            helmetEquipedDamage.text = $"{ PlayerEquipment.instance.helmet.damage}";
+            helmetEquipedDefense.text = $"{ PlayerEquipment.instance.helmet.defense}";
+            helmetEquipedSpeed.text = $"{ PlayerEquipment.instance.helmet.speed}";
+
             helmetEquipedBurn.text = $"Que.: { PlayerEquipment.instance.helmet.burnResist}%";
             helmetEquipedPoison.text = $"Ven.: { PlayerEquipment.instance.helmet.poisonResist}%";
             helmetEquipedParalyse.text = $"Par.: { PlayerEquipment.instance.helmet.paralyseResist}%";
@@ -142,7 +198,10 @@ public class MenuInventory : MonoBehaviour
         else
         {
             helmetEquipedName.text = $"Capacete: -- ";
-            helmetEquipedStatus.text = $"Vida: -- | Ataque: -- | Defesa: -- | Veloc.: --";
+            helmetEquipedLife.text = $"0";
+            helmetEquipedDamage.text = $"0";
+            helmetEquipedDefense.text = $"0";
+            helmetEquipedSpeed.text = $"0";
             helmetEquipedBurn.text = $"Que.: 0%";
             helmetEquipedPoison.text = $"Ven.: 0%";
             helmetEquipedParalyse.text = $"Par.: 0%";
@@ -152,7 +211,10 @@ public class MenuInventory : MonoBehaviour
         if (PlayerEquipment.instance.armor.name != "Item nulo")
         {
             armorEquipedName.text = $"Armadura: {PlayerEquipment.instance.armor.name}";
-            armorEquipedStatus.text = $"Vida: { PlayerEquipment.instance.armor.health} | Ataque: { PlayerEquipment.instance.armor.damage} | Defesa: { PlayerEquipment.instance.armor.defense} | Veloc.: { PlayerEquipment.instance.armor.speed}";
+            armorEquipedLife.text = $"{ PlayerEquipment.instance.armor.health}";
+            armorEquipedDamage.text = $"{ PlayerEquipment.instance.armor.damage}";
+            armorEquipedDefense.text = $"{ PlayerEquipment.instance.armor.defense}";
+            armorEquipedSpeed.text = $"{ PlayerEquipment.instance.armor.speed}";
             armorEquipedBurn.text = $"Que.: { PlayerEquipment.instance.armor.burnResist}%";
             armorEquipedPoison.text = $"Ven.: { PlayerEquipment.instance.armor.poisonResist}%";
             armorEquipedParalyse.text = $"Par.: { PlayerEquipment.instance.armor.paralyseResist}%";
@@ -161,7 +223,10 @@ public class MenuInventory : MonoBehaviour
         else
         {
             armorEquipedName.text = $"Armadura: -- ";
-            armorEquipedStatus.text = $"Vida: -- | Ataque: -- | Defesa: -- | Veloc.: --";
+            armorEquipedLife.text = $"0";
+            armorEquipedDamage.text = $"0";
+            armorEquipedDefense.text = $"0";
+            armorEquipedSpeed.text = $"0";
             armorEquipedBurn.text = $"Que.: 0%";
             armorEquipedPoison.text = $"Ven.: 0%";
             armorEquipedParalyse.text = $"Par.: 0%";
@@ -171,7 +236,10 @@ public class MenuInventory : MonoBehaviour
         if (PlayerEquipment.instance.legs.name != "Item nulo")
         {
             legsEquipedName.text = $"Calça: {PlayerEquipment.instance.legs.name}";
-            legsEquipedStatus.text = $"Vida: { PlayerEquipment.instance.legs.health} | Ataque: { PlayerEquipment.instance.legs.damage} | Defesa: { PlayerEquipment.instance.legs.defense} | Veloc.: { PlayerEquipment.instance.legs.speed}";
+            legsEquipedLife.text = $"{ PlayerEquipment.instance.legs.health}";
+            legsEquipedDamage.text = $"{ PlayerEquipment.instance.legs.damage}";
+            legsEquipedDefense.text = $"{ PlayerEquipment.instance.legs.defense}";
+            legsEquipedSpeed.text = $"{ PlayerEquipment.instance.legs.speed}";
             legsEquipedBurn.text = $"Que.: { PlayerEquipment.instance.legs.burnResist}%";
             legsEquipedPoison.text = $"Ven.: { PlayerEquipment.instance.legs.poisonResist}%";
             legsEquipedParalyse.text = $"Par.: { PlayerEquipment.instance.legs.paralyseResist}%";
@@ -180,7 +248,10 @@ public class MenuInventory : MonoBehaviour
         else
         {
             legsEquipedName.text = $"Calça: -- ";
-            legsEquipedStatus.text = $"Vida: -- | Ataque: -- | Defesa: -- | Veloc.: --";
+            legsEquipedLife.text = $"0";
+            legsEquipedDamage.text = $"0";
+            legsEquipedDefense.text = $"0";
+            legsEquipedSpeed.text = $"0";
             legsEquipedBurn.text = $"Que.: 0%";
             legsEquipedPoison.text = $"Ven.: 0%";
             legsEquipedParalyse.text = $"Par.: 0%";
@@ -190,7 +261,10 @@ public class MenuInventory : MonoBehaviour
         if (PlayerEquipment.instance.weapon.name != "Item nulo")
         {
             weaponEquipedName.text = $"Arma: {PlayerEquipment.instance.weapon.name}";
-            weaponEquipedStatus.text = $"Vida: { PlayerEquipment.instance.weapon.health} | Ataque: { PlayerEquipment.instance.weapon.damage} | Defesa: { PlayerEquipment.instance.weapon.defense} | Veloc.: { PlayerEquipment.instance.weapon.speed}";
+            weaponEquipedLife.text = $"{ PlayerEquipment.instance.weapon.health}";
+            weaponEquipedDamage.text = $"{ PlayerEquipment.instance.weapon.damage}";
+            weaponEquipedDefense.text = $"{ PlayerEquipment.instance.weapon.defense}";
+            weaponEquipedSpeed.text = $"{ PlayerEquipment.instance.weapon.speed}";
             weaponEquipedBurn.text = $"Que.: { PlayerEquipment.instance.weapon.burnResist}%";
             weaponEquipedPoison.text = $"Ven.: { PlayerEquipment.instance.weapon.poisonResist}%";
             weaponEquipedParalyse.text = $"Par.: { PlayerEquipment.instance.weapon.paralyseResist}%";
@@ -199,7 +273,10 @@ public class MenuInventory : MonoBehaviour
         else
         {
             weaponEquipedName.text = "Arma: --";
-            weaponEquipedStatus.text = $"Vida: -- | Ataque: -- | Defesa: -- | Veloc.: --";
+            weaponEquipedLife.text = $"0";
+            weaponEquipedDamage.text = $"0";
+            weaponEquipedDefense.text = $"0";
+            weaponEquipedSpeed.text = $"0";
             weaponEquipedBurn.text = $"Que.: 0%";
             weaponEquipedPoison.text = $"Ven.: 0%";
             weaponEquipedParalyse.text = $"Par.: 0%";
@@ -213,22 +290,28 @@ public class MenuInventory : MonoBehaviour
         if (item.equipType != Item.Type.item)
         {
             inventory_SelectedEquip = item;
-            descriptionStatusText.text = $"Vida: {item.health} \nAtaque: {item.damage} \nDefesa: {item.defense} \nVelocidade: {item.speed}";
-            descriptionBurn.text = $"Resist. Queimar: {item.burnResist}%";
-            descriptionPoison.text = $"Resist. Veneno: {item.poisonResist}%";
-            descriptionParalyse.text = $"Resist. Paralisia: {item.paralyseResist}%";
-            descriptionFear.text = $"Resist. Medo: {item.fearResist}%";
+            descriptionLifeText.text = $" Vida: {item.health}";
+            descriptionDamageText.text = $" Ataque: {item.damage}";
+            descriptionDefenseText.text = $" Defesa: {item.defense}";
+            descriptionSpeedText.text = $" Velocidade: {item.speed}";
+            descriptionBurn.text = $" Resist. Queimar: {item.burnResist}%";
+            descriptionPoison.text = $" Resist. Veneno: {item.poisonResist}%";
+            descriptionParalyse.text = $" Resist. Paralisia: {item.paralyseResist}%";
+            descriptionFear.text = $" Resist. Medo: {item.fearResist}%";
             equipButton.enabled = true;
             equipButtonText.text = "Equipar";
             verifyEquip.VerifyEquipPower(item);
         }
         else
         {
-            descriptionStatusText.text = $"Vida: -- \nAtaque: -- \nDefesa: -- \nVelocidade: --";
-            descriptionBurn.text = $"Resist. Queimar: {item.burnResist}%";
-            descriptionPoison.text = $"Resist. Veneno: {item.poisonResist}%";
-            descriptionParalyse.text = $"Resist. Paralisia: {item.paralyseResist}%";
-            descriptionFear.text = $"Resist. Medo: {item.fearResist}%";
+            descriptionLifeText.text = $" Vida: 0";
+            descriptionDamageText.text = $" Ataque: 0";
+            descriptionDefenseText.text = $" Defesa: 0";
+            descriptionSpeedText.text = $" Velocidade: 0";
+            descriptionBurn.text = $" Resist. Queimar: {item.burnResist}%";
+            descriptionPoison.text = $" Resist. Veneno: {item.poisonResist}%";
+            descriptionParalyse.text = $" Resist. Paralisia: {item.paralyseResist}%";
+            descriptionFear.text = $" Resist. Medo: {item.fearResist}%";
             equipButton.enabled = false;
             equipButtonText.text = "";
             verifyEquip.HideImgs();
