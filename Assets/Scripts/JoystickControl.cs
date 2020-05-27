@@ -44,7 +44,8 @@ public class JoystickControl : MonoBehaviour{
 
     public void FixedUpdate(){
         direction = Vector3.forward * fixedJoystick.Vertical + Vector3.right * fixedJoystick.Horizontal;
-        rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        rb.velocity = direction;
+        //rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.Impulse);
         rb.constraints &= ~RigidbodyConstraints.FreezePosition;
 
         if (direction != new Vector3(0, 0, 0)){

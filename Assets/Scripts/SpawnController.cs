@@ -70,7 +70,7 @@ public class SpawnController : MonoBehaviour
                         break;
                 }
 
-                instanceTempEnemy.GetComponent<EnemyController>().initTransform = enemyCount[c + countSpawnVectorPos];
+                //instanceTempEnemy.GetComponent<EnemyController>().initTransform = enemyCount[c + countSpawnVectorPos];
                 instanceTempEnemy.transform.position = enemyCount[c + countSpawnVectorPos].position;
                 instanceTempEnemy.transform.position = new Vector3(instanceTempEnemy.transform.position.x, instanceTempEnemy.transform.position.y, instanceTempEnemy.transform.position.z);
             }
