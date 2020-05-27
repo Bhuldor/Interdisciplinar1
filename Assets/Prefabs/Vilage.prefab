@@ -88,6 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2574291942853156112}
+  - component: {fileID: 1194142378573464830}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (12)"
   m_TagString: Untagged
@@ -111,6 +112,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: -87.46001, z: 0}
+--- !u!65 &1194142378573464830
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28071998117635009}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &29831948568361321
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,6 +450,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1808687486098187002}
+  - component: {fileID: 7451992463504721005}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (1)"
   m_TagString: Untagged
@@ -459,6 +474,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7451992463504721005
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72698920577311724}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &108366034726698853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,6 +1363,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2299348745803424273}
+  - component: {fileID: 4510916300433945535}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (11)"
   m_TagString: Untagged
@@ -1358,6 +1387,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -41.715, z: 0}
+--- !u!65 &4510916300433945535
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409682209512934032}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &416901792039504971
 GameObject:
   m_ObjectHideFlags: 0
@@ -2075,6 +2117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5637770294684171602}
+  - component: {fileID: 5451270920265122720}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (20)"
   m_TagString: Untagged
@@ -2098,6 +2141,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: -132.41301, z: 0}
+--- !u!65 &5451270920265122720
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542774709583594874}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &555995574065577254
 GameObject:
   m_ObjectHideFlags: 0
@@ -2390,6 +2446,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6126141290486449983}
+  - component: {fileID: 9054554299411557654}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (26)"
   m_TagString: Untagged
@@ -2413,6 +2470,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: -141.716, z: 0}
+--- !u!65 &9054554299411557654
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591646230498021179}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &603254965726974371
 GameObject:
   m_ObjectHideFlags: 0
@@ -3271,7 +3341,6 @@ Transform:
   - {fileID: 7188654071983181202}
   - {fileID: 8841104568727451357}
   - {fileID: 8310934118633969186}
-  - {fileID: 6812602585760888428}
   - {fileID: 1099646315271757609}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -3521,6 +3590,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3651592981691327421}
+  - component: {fileID: 8283625114939741102}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (13)"
   m_TagString: Untagged
@@ -3544,6 +3614,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: -95.484, z: 0}
+--- !u!65 &8283625114939741102
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817091704907376105}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &821655009132884503
 GameObject:
   m_ObjectHideFlags: 0
@@ -3868,6 +3951,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5841919785753379798}
+  - component: {fileID: 7217289403727849713}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (18)"
   m_TagString: Untagged
@@ -3891,6 +3975,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: -132.41301, z: 0}
+--- !u!65 &7217289403727849713
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861785488678238974}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &876122255466918675
 GameObject:
   m_ObjectHideFlags: 0
@@ -3979,6 +4076,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4634059634099589158}
+  - component: {fileID: 2335909269785292280}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (25)"
   m_TagString: Untagged
@@ -4002,6 +4100,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -140.472, z: 0}
+--- !u!65 &2335909269785292280
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911194203895877199}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &935792155025006189
 GameObject:
   m_ObjectHideFlags: 0
@@ -7213,6 +7324,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1505576679040536018}
+  - component: {fileID: 2774314252543291497}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (6)"
   m_TagString: Untagged
@@ -7236,6 +7348,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: -1.4610001, z: 0}
+--- !u!65 &2774314252543291497
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864918684459767859}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1890224372520134006
 GameObject:
   m_ObjectHideFlags: 0
@@ -7435,6 +7560,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2846608941934989976}
+  - component: {fileID: 2255190179983627837}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (8)"
   m_TagString: Untagged
@@ -7458,6 +7584,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: -34.029003, z: 0}
+--- !u!65 &2255190179983627837
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955861482735643589}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1957351680353481037
 GameObject:
   m_ObjectHideFlags: 0
@@ -8570,6 +8709,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8277335762855042401}
+  - component: {fileID: 7634630329802406568}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (10)"
   m_TagString: Untagged
@@ -8593,6 +8733,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: -41.715, z: 0}
+--- !u!65 &7634630329802406568
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2339049625514741026}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2344434773016291115
 GameObject:
   m_ObjectHideFlags: 0
@@ -8602,6 +8755,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 704376879660428073}
+  - component: {fileID: 7082007864876072210}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (24)"
   m_TagString: Untagged
@@ -8625,6 +8779,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -141.66, z: 0}
+--- !u!65 &7082007864876072210
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344434773016291115}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.5568085, y: 0.9999998, z: 15.717525}
+  m_Center: {x: -0.20545614, y: 2.485991e-13, z: -5.0864944}
 --- !u!1 &2348472019831185970
 GameObject:
   m_ObjectHideFlags: 0
@@ -8634,6 +8801,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6191267740759923548}
+  - component: {fileID: 8917625347372487652}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (33)"
   m_TagString: Untagged
@@ -8657,6 +8825,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: -222.47499, z: 0}
+--- !u!65 &8917625347372487652
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2348472019831185970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2378611600416790233
 GameObject:
   m_ObjectHideFlags: 0
@@ -10949,6 +11130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7830939488795498312}
+  - component: {fileID: 1688386788403799352}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (35)"
   m_TagString: Untagged
@@ -10972,6 +11154,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: -268.676, z: 0}
+--- !u!65 &1688386788403799352
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3052496779470978770}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3068283359356666151
 GameObject:
   m_ObjectHideFlags: 0
@@ -10981,6 +11176,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1552650212369051}
+  - component: {fileID: 2058489118712257774}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (2)"
   m_TagString: Untagged
@@ -11004,6 +11200,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: -2.4610002, z: 0}
+--- !u!65 &2058489118712257774
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3068283359356666151}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3111456184431576454
 GameObject:
   m_ObjectHideFlags: 0
@@ -11798,6 +12007,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 315615593053581036}
+  - component: {fileID: 6617584015461427276}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (17)"
   m_TagString: Untagged
@@ -11821,6 +12031,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: -99.09801, z: 0}
+--- !u!65 &6617584015461427276
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3326543861309252186}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3340832883069225920
 GameObject:
   m_ObjectHideFlags: 0
@@ -11909,6 +12132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 737399753653092751}
+  - component: {fileID: 7905481640628782179}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (16)"
   m_TagString: Untagged
@@ -11932,6 +12156,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -122.105, z: 0}
+--- !u!65 &7905481640628782179
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3363731884372059541}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3391973878190641387
 GameObject:
   m_ObjectHideFlags: 0
@@ -12153,6 +12390,7 @@ Transform:
   - {fileID: 3790458271480251925}
   - {fileID: 8277335762855042401}
   - {fileID: 3180170027005969433}
+  - {fileID: 6812602585760888428}
   m_Father: {fileID: 4060402193708453207}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12874,6 +13112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5585139596495219841}
+  - component: {fileID: 6704807257961697184}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (15)"
   m_TagString: Untagged
@@ -12897,6 +13136,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: -93.689, z: 0}
+--- !u!65 &6704807257961697184
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3687802388873146233}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3692848973038410721
 GameObject:
   m_ObjectHideFlags: 0
@@ -15270,6 +15522,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4413755571139496203}
+  - component: {fileID: 1834341299828909106}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (34)"
   m_TagString: Untagged
@@ -15293,6 +15546,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: -223.443, z: 0}
+--- !u!65 &1834341299828909106
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254260032318829674}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4256984446924301882
 GameObject:
   m_ObjectHideFlags: 0
@@ -17639,6 +17905,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9187827266249715165}
+  - component: {fileID: 3172357809011756516}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (5)"
   m_TagString: Untagged
@@ -17662,6 +17929,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 52.098003, z: 0}
+--- !u!65 &3172357809011756516
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4662501887988418681}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4663840348250251203
 GameObject:
   m_ObjectHideFlags: 0
@@ -18793,6 +19073,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2997321967794466237}
+  - component: {fileID: 3561878118335411793}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (19)"
   m_TagString: Untagged
@@ -18816,6 +19097,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: -132.41301, z: 0}
+--- !u!65 &3561878118335411793
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4891225865359689943}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4893505703567117206
 GameObject:
   m_ObjectHideFlags: 0
@@ -21792,6 +22086,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3819634342614554178}
+  - component: {fileID: 3851695674083190664}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (23)"
   m_TagString: Untagged
@@ -21815,6 +22110,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -88.68301, z: 0}
+--- !u!65 &3851695674083190664
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5551883582557726859}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.7323337, y: 0.9999998, z: 15.8073225}
+  m_Center: {x: -0.25775227, y: 2.438528e-13, z: -5.444533}
 --- !u!1 &5596429533695160582
 GameObject:
   m_ObjectHideFlags: 0
@@ -22611,6 +22919,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1481378059224061557}
+  - component: {fileID: 4416483891600201849}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (37)"
   m_TagString: Untagged
@@ -22634,6 +22943,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: -285.30798, z: 0}
+--- !u!65 &4416483891600201849
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5739415017666537824}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5745461907476527799
 GameObject:
   m_ObjectHideFlags: 0
@@ -27792,6 +28114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8174208850003023817}
+  - component: {fileID: 2435707227367255772}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (32)"
   m_TagString: Untagged
@@ -27815,6 +28138,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: -223.32599, z: 0}
+--- !u!65 &2435707227367255772
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6991069085914086861}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6997682343137167447
 GameObject:
   m_ObjectHideFlags: 0
@@ -28614,6 +28950,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7676419757782072045}
+  - component: {fileID: 8107023025901972646}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (14)"
   m_TagString: Untagged
@@ -28637,6 +28974,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: -93.689, z: 0}
+--- !u!65 &8107023025901972646
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7178694907143493820}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7191648171412366617
 GameObject:
   m_ObjectHideFlags: 0
@@ -28646,6 +28996,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3180170027005969433}
+  - component: {fileID: 248977091392906240}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (22)"
   m_TagString: Untagged
@@ -28669,6 +29020,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: -99.797005, z: 0}
+--- !u!65 &248977091392906240
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7191648171412366617}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7223732403085176152
 GameObject:
   m_ObjectHideFlags: 0
@@ -30016,6 +30380,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8545257559540084928}
+  - component: {fileID: 4873719617615072731}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (36)"
   m_TagString: Untagged
@@ -30039,6 +30404,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: -268.469, z: 0}
+--- !u!65 &4873719617615072731
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7573616295310407169}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7595866205802412190
 GameObject:
   m_ObjectHideFlags: 0
@@ -30285,6 +30663,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7827079270654814631}
+  - component: {fileID: 1263815574549843424}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (29)"
   m_TagString: Untagged
@@ -30308,6 +30687,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: -195.812, z: 0}
+--- !u!65 &1263815574549843424
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7642059192431472681}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7648735170943610883
 GameObject:
   m_ObjectHideFlags: 0
@@ -30396,6 +30788,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7282070261752261580}
+  - component: {fileID: 5178970380862257061}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (3)"
   m_TagString: Untagged
@@ -30419,6 +30812,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 52.098003, z: 0}
+--- !u!65 &5178970380862257061
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7670788743547817782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.8620706, y: 0.9999998, z: 14.971579}
+  m_Center: {x: -0.060811557, y: 0, z: -4.754118}
 --- !u!1 &7684184107983252945
 GameObject:
   m_ObjectHideFlags: 0
@@ -30744,6 +31150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3193236340701495236}
+  - component: {fileID: 3557110925434538253}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (27)"
   m_TagString: Untagged
@@ -30767,6 +31174,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: -142, z: 0}
+--- !u!65 &3557110925434538253
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7741279234537369532}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7758053584213244002
 GameObject:
   m_ObjectHideFlags: 0
@@ -32113,6 +32533,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3007860287607095520}
+  - component: {fileID: 137407863196286029}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (7)"
   m_TagString: Untagged
@@ -32136,6 +32557,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: -2.8960001, z: 0}
+--- !u!65 &137407863196286029
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8051515215799731173}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8075294757734432731
 GameObject:
   m_ObjectHideFlags: 0
@@ -32223,6 +32657,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3106317863082844286}
+  - component: {fileID: 1261126315561439148}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (31)"
   m_TagString: Untagged
@@ -32246,6 +32681,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: -227.41899, z: 0}
+--- !u!65 &1261126315561439148
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8084856563379974874}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8094499333684343280
 GameObject:
   m_ObjectHideFlags: 0
@@ -32569,6 +33017,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3790458271480251925}
+  - component: {fileID: 7650143778910279328}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (9)"
   m_TagString: Untagged
@@ -32592,6 +33041,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: -41.715, z: 0}
+--- !u!65 &7650143778910279328
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8168644483546962868}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8221088594975220973
 GameObject:
   m_ObjectHideFlags: 0
@@ -32601,6 +33063,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1967099717232225983}
+  - component: {fileID: 1900288347291977462}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (28)"
   m_TagString: Untagged
@@ -32624,6 +33087,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: -180.82098, z: 0}
+--- !u!65 &1900288347291977462
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8221088594975220973}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8259876812893299733
 GameObject:
   m_ObjectHideFlags: 0
@@ -34443,6 +34919,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3269695153829396721}
+  - component: {fileID: 8095260944765421700}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (30)"
   m_TagString: Untagged
@@ -34466,6 +34943,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -227.41899, z: 0}
+--- !u!65 &8095260944765421700
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8766520985399372966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8789694937203383028
 GameObject:
   m_ObjectHideFlags: 0
@@ -34554,6 +35044,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2776324836618642313}
+  - component: {fileID: 2941851445388187925}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1 (4)"
   m_TagString: Untagged
@@ -34577,6 +35068,19 @@ Transform:
   m_Father: {fileID: 8310934118633969186}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: -1.291, z: 0}
+--- !u!65 &2941851445388187925
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8796301065101614491}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8810476444240995085
 GameObject:
   m_ObjectHideFlags: 0
@@ -35360,7 +35864,7 @@ Transform:
   - {fileID: 3688534013890935547}
   - {fileID: 6272054870662267700}
   m_Father: {fileID: 4060402193708453207}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: -44.473003, z: 0}
 --- !u!1 &8904442148198096764
 GameObject:
@@ -36553,6 +37057,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6812602585760888428}
+  - component: {fileID: 402765331634494479}
   m_Layer: 0
   m_Name: "pali\xE7ada-v1"
   m_TagString: Untagged
@@ -36567,15 +37072,28 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9150007587834346141}
-  m_LocalRotation: {x: -0, y: 0.3565629, z: -0, w: 0.9342714}
+  m_LocalRotation: {x: -0, y: 0.35656288, z: -0, w: 0.93427134}
   m_LocalPosition: {x: -6.0343266, y: -2.2329998, z: 19.541206}
   m_LocalScale: {x: 0.19438401, y: 0.19438401, z: 0.19438401}
   m_Children:
   - {fileID: 1786516201934708370}
   - {fileID: 702928160242861900}
-  m_Father: {fileID: 4060402193708453207}
-  m_RootOrder: 9
+  m_Father: {fileID: 8310934118633969186}
+  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: -3.2210002, z: 0}
+--- !u!65 &402765331634494479
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9150007587834346141}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9206570429781800754
 GameObject:
   m_ObjectHideFlags: 0
