@@ -7,7 +7,7 @@ public class Lore : MonoBehaviour
 {
     [SerializeField] protected Button skipTutorial;
     [SerializeField] protected Text skipTutorialText;
-
+    [SerializeField] private AudioSource openingMusic;
     [SerializeField] protected Text messageText;
     [SerializeField] private CanvasGroup blackPanel;
     [TextArea(3, 25)][SerializeField] private string[] lore;
@@ -42,6 +42,7 @@ public class Lore : MonoBehaviour
             else
             {
                 startedTutorial = true;
+                openingMusic.Stop();
                 tutorial.StartTutorial();
             }
                 
@@ -53,6 +54,7 @@ public class Lore : MonoBehaviour
         skipTutorial.onClick.RemoveListener(() => SkipLore());
         StopAllCoroutines();
         startedTutorial = true;
+        openingMusic.Stop();
         LeanTween.alphaCanvas(blackPanel, 0f, 0.5f);
         tutorial.StartTutorial();
     }
