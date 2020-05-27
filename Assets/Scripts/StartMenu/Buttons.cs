@@ -4,10 +4,17 @@ using UnityEngine;
 public class Buttons : MonoBehaviour
 {
     public GameObject settingsPanel;
-
+    private BlackOutAnimation BoAnimation;
+    
+    private void Start()
+    {
+        BoAnimation = GetComponent<BlackOutAnimation>();
+        BoAnimation.EnteringScene();
+    }
     public void NewGame()
     {
-        SceneManager.LoadScene("WorldScene");
+        GetComponent<AudioSource>().Play();
+        BoAnimation.ExitingScene("OpeningScene", 4f);
     }
     public void Continue()
     {
@@ -25,5 +32,16 @@ public class Buttons : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+
+    public void GameOver_continue()
+    {
+        
+        SceneManager.UnloadSceneAsync("GameOver");
+    }
+
+    public void GameOver_menu()
+    {
+        SceneManager.LoadScene("StartMenu");
     }
 }
