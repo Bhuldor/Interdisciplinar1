@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class TreasureChest : MonoBehaviour
 {
-    [SerializeField] private int givenExpPoints;
-    [SerializeField] private PlayerStatus player;
+    [SerializeField] private int givenExpPoints;    
     [SerializeField] private List<int> givenItensIDs;
+    private PlayerStatus player;
+
     public void GetTreasure()
     {
+        player = GameObject.Find("Player").GetComponent<PlayerStatus>();
         player.ObtainExp(givenExpPoints);
 
         foreach(int i in givenItensIDs)

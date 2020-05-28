@@ -118,7 +118,7 @@ public class JoystickControl : MonoBehaviour{
 
     private void ShieldSkill(){
         skillUsed = true;
-        weaponSkill = Instantiate(swordSkill, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+        weaponSkill = Instantiate(swordSkill, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), transform.rotation);
         weaponSkill.transform.parent = GameObject.Find("Player").transform;
         Destroy(weaponSkill, 5);
     }

@@ -9,7 +9,7 @@ public class SceneManagerScript : MonoBehaviour
 	{
 		Instance = this;
 		
-		Load("Vila");
+		//Load("Vila");
 	}
 
 	public void Load(string sceneName)
