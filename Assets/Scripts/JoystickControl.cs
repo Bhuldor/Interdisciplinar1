@@ -17,13 +17,13 @@ public class JoystickControl : MonoBehaviour{
     public bool isAxe;
     public bool isSword;
     public bool isDagger;
-
+    public bool isAttacking = false;
     public GameObject swordSkill;
     public GameObject axeSkill;
     private GameObject weaponSkill;
 
     private Animator anim;
-    private bool isAttacking = false;
+    
 
     //Dash
     public float dashSpeed;
@@ -78,6 +78,7 @@ public class JoystickControl : MonoBehaviour{
         //BasicAttack
         if (basicAttack.action()) {            
             anim.SetBool("Attacking", true);
+            isAttacking = true;
             StartCoroutine(WaitAttackEnd(1f));
         }
         //SpecialAttack
@@ -132,6 +133,7 @@ public class JoystickControl : MonoBehaviour{
 
     IEnumerator WaitAttackEnd(float waitTime){
         yield return new WaitForSeconds(waitTime);
+        isAttacking = false;
         anim.SetBool("Attacking", false);
     }
 }
