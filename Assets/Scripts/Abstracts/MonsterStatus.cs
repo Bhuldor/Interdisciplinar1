@@ -3,6 +3,7 @@
 public abstract class MonsterStatus : CharacterStatus
 {
     protected float givenExp;
+    
     public MonsterStatus(float atk, float def, float spd, float hp, float gExp) : base(atk, def, spd, hp)
     {
         attack = atk;

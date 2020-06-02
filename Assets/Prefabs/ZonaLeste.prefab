@@ -5222,6 +5222,7 @@ GameObject:
   - component: {fileID: 7187386178232945404}
   - component: {fileID: 8011499157154927407}
   - component: {fileID: 8244513745175864906}
+  - component: {fileID: 4669599408079801671}
   m_Layer: 0
   m_Name: Tree_02 (2)
   m_TagString: Untagged
@@ -5303,6 +5304,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 4471b1f7f824e4d44887e1364c6fc61a, type: 3}
+--- !u!114 &4669599408079801671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504525096345609214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b9a1ebbdb80004d89788b8ca5b1038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &510996643649908327
 GameObject:
   m_ObjectHideFlags: 0
@@ -51157,6 +51170,7 @@ GameObject:
   - component: {fileID: 20791453525664272}
   - component: {fileID: 1832199304929880495}
   - component: {fileID: 3925704558394622402}
+  - component: {fileID: 7617634386958350994}
   m_Layer: 0
   m_Name: EnemyOneQuest
   m_TagString: Untagged
@@ -51453,6 +51467,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
+--- !u!114 &7617634386958350994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5111491056302260058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7832850974b5e644eb64c69bdd34eab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questGiver: {fileID: 0}
+  testDestroy: 0
 --- !u!1 &5112971838616358437
 GameObject:
   m_ObjectHideFlags: 0

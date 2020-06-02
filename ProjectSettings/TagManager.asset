@@ -9,6 +9,7 @@ TagManager:
   - NPC
   - Weapon
   - EnemySpawnPosition
+  - QuestBoitataMob
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - 
   - Building
   - Enemy
-  - 
-  - 
+  - Destroyable
+  - Grass
   - 
   - 
   - 

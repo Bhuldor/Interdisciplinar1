@@ -17,9 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: ea17ada676b2fa042a3945b1d5141117
-  - enabled: 1
-    path: Assets/Scenes/Vila.unity
-    guid: fc389bd5e7659dc4ab3fdd06e650125e
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Vitoria.unity
     guid: 2d8d73a43d0f1ce4a8f5e3f0235f9cd6
