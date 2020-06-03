@@ -9,7 +9,7 @@ public class Buttons : MonoBehaviour
     private void Start()
     {
         BoAnimation = GetComponent<BlackOutAnimation>();
-        BoAnimation.EnteringScene();
+        BoAnimation.EnteringScene(0);
     }
     public void NewGame()
     {
@@ -36,8 +36,9 @@ public class Buttons : MonoBehaviour
 
     public void GameOver_continue()
     {
-        
-        SceneManager.UnloadSceneAsync("GameOver");
+        var worldSceneFadePanel = GameObject.Find("FadeController").GetComponent<BlackOutAnimation>();
+        BoAnimation.ExitingSceneUnload("GameOver", 1f);
+        worldSceneFadePanel.EnteringScene(1f);
     }
 
     public void GameOver_menu()

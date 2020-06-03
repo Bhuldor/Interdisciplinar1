@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour{
     public Sprite pauseImg;
     public Sprite playImg;
     public Font defauldFont;
+    
 
     //Static
     public static int difficultLevel = 1;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour{
     public static bool gameEffects = true;
     public static bool gameMusics = true;
     private static bool gamePaused = false;
+    public static Vector3 playerStartPosition;
 
     public enum Language
     {
@@ -46,6 +48,7 @@ public class GameManager : MonoBehaviour{
     private void Awake()
     {
         StartInventory();
+        playerStartPosition = GameObject.Find("Player").transform.position;
     }
 
 
