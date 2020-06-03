@@ -21,6 +21,5 @@ public class EnemyHealthManager : MonoBehaviour{
 
     public void HurtEnemy(int damage){
         currentHealth -= damage;
-        Debug.Log(currentHealth);
     }
 }

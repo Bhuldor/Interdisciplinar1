@@ -361,7 +361,7 @@ public class MenuInventory : MonoBehaviour
         }
     }
     public void UnequipWeapon()
-    {
+    {/*
         if (PlayerEquipment.instance.weapon.name != "Item nulo")
         {
             if (PlayerEquipment.instance.Unequip(Item.Type.sword))
@@ -370,5 +370,6 @@ public class MenuInventory : MonoBehaviour
                 UpdateEquipedPanel();
             }
         }
+        */
     }
 }

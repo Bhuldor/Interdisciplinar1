@@ -123,6 +123,7 @@ public class GameManager : MonoBehaviour{
         if (PlayerEquipment.instance != null)
             Debug.LogWarning("Mais de uma instancia de Player Equipment!");
         PlayerEquipment.instance = new PlayerEquipment();
+        PlayerEquipment.instance.weapon.Clone(Inventory.instance.GetItemByID(9)); 
 
         StartCoroutine(CallEvent());
     }
