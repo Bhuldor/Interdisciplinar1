@@ -1,7 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor.Animations;
-//using UnityEditor.Animations;
+#endif
 using UnityEngine;
 
 public class JoystickControl : MonoBehaviour{
@@ -27,14 +27,16 @@ public class JoystickControl : MonoBehaviour{
     public Animator animAxe;
     public Animator animSword;
     public Animator animDagger;
+#if UNITY_EDITOR
     public AnimatorController axeAnimation;
     public AnimatorController daggerAnimation;
     public AnimatorController swordAnimation;
+#endif
     public Avatar axeAvatar;
     public Avatar swordAvatar;
     public Avatar daggerAvatar;
 
-    public GameObject weaponCollider;
+    private GameObject weaponCollider;
     public GameObject axeCollider;
     public GameObject swordCollider;
     public GameObject daggerCollider;
@@ -55,6 +57,9 @@ public class JoystickControl : MonoBehaviour{
     private bool skillUsed = false;
     private Vector3 direction;
 
+    public AudioSource walkSound;
+    public AudioSource atkSound;
+
     public static JoystickControl instance;
 
     private void Start(){
@@ -69,16 +74,19 @@ public class JoystickControl : MonoBehaviour{
         direction = Vector3.forward * fixedJoystick.Vertical + Vector3.right * fixedJoystick.Horizontal;
         rb.velocity = direction;
         //rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.Impulse);
-        rb.constraints &= ~RigidbodyConstraints.FreezePosition;
+        rb.constraints &= ~RigidbodyConstraints.FreezePosition;        
 
         if (direction != new Vector3(0, 0, 0)){
+            walkSound.Play();
             anim.SetFloat("Speed", 1);
             anim.SetBool("Attacking", false);
             transform.rotation = Quaternion.LookRotation(direction);
             transform.Translate(direction * speed * Time.deltaTime, Space.World);
+            
         }
         else
         {
+            walkSound.Stop();
             anim.SetFloat("Speed", 0);
         }
 
@@ -99,7 +107,8 @@ public class JoystickControl : MonoBehaviour{
         }
 
         //BasicAttack
-        if (basicAttack.action()) {            
+        if (basicAttack.action()) {
+            atkSound.Play();
             anim.SetBool("Attacking", true);
             isAttacking = true;
             weaponCollider.SetActive(true);
