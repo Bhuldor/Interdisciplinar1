@@ -18,6 +18,8 @@ public class PlayerStatus : CharacterStatus
     private float paralyseResistance;
     private float fearResistance;
 
+    private Quest activeSideQuest;
+
     public delegate void LevelUp();
     public static event LevelUp OnLevelUp;
 
@@ -71,7 +73,9 @@ public class PlayerStatus : CharacterStatus
     public float getPoisonResistance() { return poisonResistance; }
     public float getParalyseResistance() { return paralyseResistance; }
     public float getFearResistance() { return fearResistance; }
+    public Quest getActiveSideQuest() { return activeSideQuest; }
 
+    public void setActiveSideQuest(Quest value) { activeSideQuest = value; }
 
     /*
     public void setConstitution(int constitution) { this.constitution = constitution; }

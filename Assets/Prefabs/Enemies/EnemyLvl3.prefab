@@ -133,7 +133,7 @@ MonoBehaviour:
   player: {fileID: 0}
   enemyThreat: 3
   distanceToChase: 5
-  initTransform: {fileID: 0}
+  initTransform: {fileID: 5846474334937196492}
 --- !u!114 &7949451732778455209
 MonoBehaviour:
   m_ObjectHideFlags: 0

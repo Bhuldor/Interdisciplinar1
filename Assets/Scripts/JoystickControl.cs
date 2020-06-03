@@ -17,13 +17,13 @@ public class JoystickControl : MonoBehaviour{
     public bool isAxe;
     public bool isSword;
     public bool isDagger;
-
+    public bool isAttacking = false;
     public GameObject swordSkill;
     public GameObject axeSkill;
     private GameObject weaponSkill;
 
     private Animator anim;
-    private bool isAttacking = false;
+    
 
     //Dash
     public float dashSpeed;
@@ -44,7 +44,8 @@ public class JoystickControl : MonoBehaviour{
 
     public void FixedUpdate(){
         direction = Vector3.forward * fixedJoystick.Vertical + Vector3.right * fixedJoystick.Horizontal;
-        rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        rb.velocity = direction;
+        //rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.Impulse);
         rb.constraints &= ~RigidbodyConstraints.FreezePosition;
 
         if (direction != new Vector3(0, 0, 0)){
@@ -77,6 +78,7 @@ public class JoystickControl : MonoBehaviour{
         //BasicAttack
         if (basicAttack.action()) {            
             anim.SetBool("Attacking", true);
+            isAttacking = true;
             StartCoroutine(WaitAttackEnd(1f));
         }
         //SpecialAttack
@@ -117,7 +119,7 @@ public class JoystickControl : MonoBehaviour{
 
     private void ShieldSkill(){
         skillUsed = true;
-        weaponSkill = Instantiate(swordSkill, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+        weaponSkill = Instantiate(swordSkill, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), transform.rotation);
         weaponSkill.transform.parent = GameObject.Find("Player").transform;
         Destroy(weaponSkill, 5);
     }
@@ -131,6 +133,7 @@ public class JoystickControl : MonoBehaviour{
 
     IEnumerator WaitAttackEnd(float waitTime){
         yield return new WaitForSeconds(waitTime);
+        isAttacking = false;
         anim.SetBool("Attacking", false);
     }
 }

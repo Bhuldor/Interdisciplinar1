@@ -6,5 +6,4 @@
 -Felipe Marinho
 -João Nobrega
 -Paulo Sergio
--Roberto Zerbinatti
 -Rodrigo Alvares

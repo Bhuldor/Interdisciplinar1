@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class Tutorial : Lore
 {
-    
 
+    [SerializeField] private AudioSource tutorialMusic;
     [SerializeField] private GameObject messageTextPanel;
     [SerializeField] private GameObject healthBar;
     [SerializeField] private GameObject leftControl;
@@ -36,10 +34,10 @@ public class Tutorial : Lore
 
     public void StartTutorial()
     {
+        tutorialMusic.Play();
         messageText.text = "";
         messageText.resizeTextForBestFit = true;
         messageText.alignment = TextAnchor.MiddleCenter;
-        
         HealthBar();
         skipTutorialText.text = "Pular tutorial >>";
         skipTutorial.gameObject.SetActive(true);
@@ -105,7 +103,7 @@ public class Tutorial : Lore
                 var rt = rightControl.GetComponent<RectTransform>();
                 messageTextRT.sizeDelta = new Vector2(rt.sizeDelta.x * 10, rt.sizeDelta.y * 14);
                 StartCoroutine(TypeLetters("Utilize o botão principal com icone de sua arma para atacar.", false));
-                messageText.transform.position = rightControl.transform.position - new Vector3(-rightControl.transform.position.x / 8, rightControl.transform.position.y / 4, 0);
+                messageText.transform.position = rightControl.transform.position - new Vector3(+rightControl.transform.position.x / 8, -rightControl.transform.position.y * 2, 0);
 
                 messageTextPanelRT.sizeDelta = messageTextRT.sizeDelta;
                 messageTextPanel.transform.position = messageText.transform.position;

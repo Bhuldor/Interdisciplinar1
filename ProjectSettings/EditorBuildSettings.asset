@@ -14,4 +14,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WorldScene.unity
     guid: 9b389ba93ccc7e64aa910760a613b48d
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: ea17ada676b2fa042a3945b1d5141117
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Vitoria.unity
+    guid: 2d8d73a43d0f1ce4a8f5e3f0235f9cd6
+  - enabled: 1
+    path: Assets/Scenes/Caipora.unity
+    guid: 06e7ecb292677194a85ecebc7ea8f111
+  - enabled: 1
+    path: Assets/Scenes/Boitata.unity
+    guid: 7654f466be271ee4d9bc2574ec5a65f1
+  - enabled: 1
+    path: Assets/Scenes/Cuca.unity
+    guid: a6ba5dd66aa8c2e40a514ffe6ad9d4dd
   m_configObjects: {}
