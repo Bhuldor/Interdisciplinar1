@@ -7,19 +7,30 @@ public class EnemyHealthManager : MonoBehaviour{
 
     //Privates
     private int currentHealth;
+    private int maxHealth;
 
     void Start(){
         currentHealth = health;
+        maxHealth = health;
     }
    
     void Update(){
         if (currentHealth <= 0){
-            Debug.Log("Death Enemy");
             Destroy(gameObject);
         }
     }
 
     public void HurtEnemy(int damage){
         currentHealth -= damage;
+    }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+    
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
     }
 }

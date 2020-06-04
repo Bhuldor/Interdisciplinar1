@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour{
         player = FindObjectOfType<PlayerHealthManager>();
         navMeshAgent = FindObjectOfType<NavMeshAgent>();
 
-        navMeshAgent.enabled = true;
+        navMeshAgent.enabled = true;        
     }
    
     private void FixedUpdate(){
