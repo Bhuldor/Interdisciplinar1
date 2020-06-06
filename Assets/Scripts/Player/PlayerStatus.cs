@@ -169,35 +169,59 @@ public class PlayerStatus : CharacterStatus
 
     public float getTotalDefense()
     {
-        return defense + PlayerEquipment.instance.GetTotalEquipedDefense();
+        if (PlayerEquipment.instance != null)
+            return defense + PlayerEquipment.instance.GetTotalEquipedDefense();
+
+        return defense;
     }
     public float getTotalHP()
     {
-        return hitPoints + PlayerEquipment.instance.GetTotalEquipedHealth();
+        if(PlayerEquipment.instance != null)
+            return hitPoints + PlayerEquipment.instance.GetTotalEquipedHealth();
+
+        return hitPoints;
     }
     public float getTotalAttack()
     {
-        return attack + PlayerEquipment.instance.GetTotalEquipedDamage();
+        if (PlayerEquipment.instance != null)
+            return attack + PlayerEquipment.instance.GetTotalEquipedDamage();
+
+        return attack;
     }
     public float getTotalSpeed()
     {
-        return speed + PlayerEquipment.instance.GetTotalEquipedSpeed();
+        if (PlayerEquipment.instance != null)
+            return speed + PlayerEquipment.instance.GetTotalEquipedSpeed();
+
+        return speed;
     }
     public float getTotalFireResist()
     {
-        return burnResistance + PlayerEquipment.instance.GetTotalEquipedBurnResist();
+        if (PlayerEquipment.instance != null)
+            return burnResistance + PlayerEquipment.instance.GetTotalEquipedBurnResist();
+
+        return burnResistance;
     }
     public float getTotalPoisonResist()
     {
-        return poisonResistance + PlayerEquipment.instance.GetTotalEquipedPoisonResist();
+        if (PlayerEquipment.instance != null)
+            return poisonResistance + PlayerEquipment.instance.GetTotalEquipedPoisonResist();
+
+        return poisonResistance;
     }
     public float getTotalParalyseResist()
     {
-        return poisonResistance + PlayerEquipment.instance.GetTotalEquipedParalyseResist();
+        if (PlayerEquipment.instance != null)
+            return paralyseResistance + PlayerEquipment.instance.GetTotalEquipedParalyseResist();
+
+        return paralyseResistance;
     }
     public float getTotalFearResist()
     {
-        return fearResistance + PlayerEquipment.instance.GetTotalEquipedFearResist();
+        if (PlayerEquipment.instance != null)
+            return fearResistance + PlayerEquipment.instance.GetTotalEquipedFearResist();
+
+        return fearResistance;
     }
 
     private float getMultiplier()

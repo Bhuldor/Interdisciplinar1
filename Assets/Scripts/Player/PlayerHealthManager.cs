@@ -88,6 +88,7 @@ public class PlayerHealthManager : MonoBehaviour{
         yield return new WaitForSeconds(WaitTime);
         player.gameObject.transform.position = GameManager.playerStartPosition;
         FullHeal();
+        gameOver = false;
     }
 
     private void OnDestroy()
