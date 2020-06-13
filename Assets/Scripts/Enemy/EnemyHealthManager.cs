@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealthManager : MonoBehaviour{
 
@@ -7,20 +9,33 @@ public class EnemyHealthManager : MonoBehaviour{
 
     //Privates
     private int currentHealth;
+    private int maxHealth;
 
-    void Start(){
+    void Start(){        
         currentHealth = health;
+        maxHealth = health;        
+        //SetMaxHealth(maxHealth);
+        //Sethealth(currentHealth);
     }
    
     void Update(){
         if (currentHealth <= 0){
-            Debug.Log("Death Enemy");
-            Destroy(gameObject);
+            //StartCoroutine(HideHealthBar(2));
+            Destroy(gameObject);            
         }
     }
 
     public void HurtEnemy(int damage){
+        //healthBar.SetActive(true);
         currentHealth -= damage;
-        Debug.Log(currentHealth);
+        //StartCoroutine(HideHealthBar(2));
+    }
+
+    public int GetMaxHealth(){
+        return maxHealth;
+    }
+    
+    public int GetCurrentHealth(){
+        return currentHealth;
     }
 }

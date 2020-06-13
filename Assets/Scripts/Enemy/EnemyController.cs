@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour{
 
@@ -6,10 +7,12 @@ public class EnemyController : MonoBehaviour{
     public float moveSpeed = 2.5f;
     public PlayerHealthManager player;
     public int enemyThreat;
-    public float distanceToChase;
+    public float distanceToChase;    
 
     public Transform initTransform;
     private Transform target;
+
+    private NavMeshAgent navMeshAgent;
 
     //Privates
     private Rigidbody mRigidbody;
@@ -18,6 +21,9 @@ public class EnemyController : MonoBehaviour{
     void Start(){        
         mRigidbody = GetComponent<Rigidbody>();
         player = FindObjectOfType<PlayerHealthManager>();
+        navMeshAgent = FindObjectOfType<NavMeshAgent>();
+
+        navMeshAgent.enabled = true;        
     }
    
     private void FixedUpdate(){

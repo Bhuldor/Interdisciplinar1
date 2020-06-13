@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PlayerHealthManager : MonoBehaviour{
 
@@ -15,8 +16,11 @@ public class PlayerHealthManager : MonoBehaviour{
     private Color storedColor;
     [SerializeField] private HealthBar healthBar;
     private PlayerStatus player;
+    private BlackOutAnimation fadePanel;
+    public bool gameOver = false;
 
     void Start(){
+        fadePanel = GameObject.Find("FadeController").GetComponent<BlackOutAnimation>();
         player = GetComponent<PlayerStatus>();
         startingHealth = player.getTotalHP();
         currentHealth = startingHealth;
@@ -28,9 +32,6 @@ public class PlayerHealthManager : MonoBehaviour{
     }
    
     void Update(){
-        if (currentHealth <= 0){
-            gameObject.SetActive(false);
-        }
 
         if (flashCounter > 0){
             flashCounter -= Time.deltaTime;
@@ -49,9 +50,13 @@ public class PlayerHealthManager : MonoBehaviour{
 
     public void HurtPlayer(int damageAmount){
         currentHealth -= damageAmount;
+        if (currentHealth < 0)
+            currentHealth = 0;
         healthBar.Sethealth(currentHealth);
         flashCounter = flashLenght;
         rend.material.SetColor("_Color", Color.white);
+        if (currentHealth == 0)
+            GameOver();
     }
 
     public void HealPlayer(float healAmount)
@@ -64,6 +69,26 @@ public class PlayerHealthManager : MonoBehaviour{
         startingHealth = player.getTotalHP();
         healthBar.SetMaxHealth(startingHealth);
         HealPlayer(player.getTotalHP());
+    }
+
+    private void GameOver()
+    {
+        if (gameOver)
+            return;
+        //Ativar animação de morrer
+        float playerDeathAnimTime = 1f; //Duração da animação
+        gameOver = true;
+        StartCoroutine(WaitAndCallGameOver(playerDeathAnimTime));
+    }
+
+    private IEnumerator WaitAndCallGameOver(float WaitTime)
+    {
+        yield return new WaitForSeconds(WaitTime);
+        fadePanel.ExitingSceneAsync("GameOver", WaitTime);
+        yield return new WaitForSeconds(WaitTime);
+        player.gameObject.transform.position = GameManager.playerStartPosition;
+        FullHeal();
+        gameOver = false;
     }
 
     private void OnDestroy()

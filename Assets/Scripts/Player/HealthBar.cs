@@ -9,7 +9,10 @@ public class HealthBar : MonoBehaviour
    
     public void Sethealth(float health)
     {
-        slider.value = health;
+        if(health > 0)
+            slider.value = health;
+        else
+            slider.value = 0;
         UpdateMaxHealthLabel(slider.maxValue, health);
     }
 
@@ -23,6 +26,8 @@ public class HealthBar : MonoBehaviour
     {
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
+        if (currentHealth <= 0)
+            currentHealth = 0;
         healthText.text = $"{currentHealth}/{maxHealth}";
     }
 }

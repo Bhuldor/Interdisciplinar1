@@ -9,8 +9,9 @@ public class BlackOutAnimation : MonoBehaviour
     [SerializeField] private GameObject panelToLoad;
     [SerializeField] private bool loadPanel = false;
     
-    IEnumerator Begin()
+    IEnumerator Begin(float delay)
     {
+        yield return new WaitForSeconds(delay);
         LeanTween.alphaCanvas(blackPanel, 0, 1f);
         yield return new WaitForSeconds(1f);
         if(loadPanel)
@@ -34,9 +35,24 @@ public class BlackOutAnimation : MonoBehaviour
         SceneManager.LoadScene(sceneToLoad);
     }
 
-    public void EnteringScene()
+    IEnumerator FinishAndLoadSceneUnload(string sceneToUnload, float delayToLoad)
     {
-        StartCoroutine(Begin());
+        blackPanel.gameObject.SetActive(true);
+        LeanTween.alphaCanvas(blackPanel, 1, delayToLoad);
+        yield return new WaitForSeconds(delayToLoad);
+        SceneManager.UnloadSceneAsync(sceneToUnload);
+    }
+    IEnumerator FinishAndLoadSceneAsync(string sceneToLoad, float delayToLoad)
+    {
+        blackPanel.gameObject.SetActive(true);
+        LeanTween.alphaCanvas(blackPanel, 1, delayToLoad);
+        yield return new WaitForSeconds(delayToLoad);
+        SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
+    }
+
+    public void EnteringScene(float delayToStart)
+    {
+        StartCoroutine(Begin(delayToStart));
     } 
 
     public void ExitingScene(int sceneToLoad, float delayToLoad)
@@ -46,5 +62,14 @@ public class BlackOutAnimation : MonoBehaviour
     public void ExitingScene(string sceneToLoad, float delayToLoad)
     {
         StartCoroutine(FinishAndLoadScene(sceneToLoad, delayToLoad));
+    }
+    public void ExitingSceneAsync(string sceneToLoad, float delayToLoad)
+    {
+        StartCoroutine(FinishAndLoadSceneAsync(sceneToLoad, delayToLoad));
+    }
+
+    public void ExitingSceneUnload(string sceneToUnload, float delayToUnload)
+    {
+        StartCoroutine(FinishAndLoadSceneUnload(sceneToUnload,delayToUnload));
     }
 }

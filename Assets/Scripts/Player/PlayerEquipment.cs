@@ -31,11 +31,25 @@ public class PlayerEquipment
                 legs.Clone(equipment);
                 break;
             case Item.Type.sword:
+                if (weapon.name != "Item nulo")
+                    returnToInventory.Clone(weapon);
+                weapon.Clone(equipment);
+                //Sword-0 Axe-1 Dagger-2
+                JoystickControl.instance.Change3dModel(0);
+                break;
             case Item.Type.dagger:
+                if (weapon.name != "Item nulo")
+                    returnToInventory.Clone(weapon);
+                weapon.Clone(equipment);
+                //Sword-0 Axe-1 Dagger-2
+                JoystickControl.instance.Change3dModel(2);
+                break;
             case Item.Type.axe:
                 if(weapon.name != "Item nulo")
                     returnToInventory.Clone(weapon);
                 weapon.Clone(equipment);
+                //Sword-0 Axe-1 Dagger-2
+                JoystickControl.instance.Change3dModel(1);
                 break;
             default:
                 Debug.LogError("Equipamento passado não possui tipo compativel.");
