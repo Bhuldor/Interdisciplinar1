@@ -6,8 +6,7 @@ public class DamageController : MonoBehaviour
     public int damageToGive;
     public string whoToHurt = "Player";
 
-    public void OnTriggerEnter(Collider other)
-    {
+    public void OnTriggerEnter(Collider other){        
         if (other.gameObject.tag == "Weapon" && transform.tag == "Enemy"){
             transform.GetComponent<EnemyHealthManager>().HurtEnemy(other.gameObject.GetComponent<DamageController>().damageToGive);
         }
@@ -20,11 +19,10 @@ public class DamageController : MonoBehaviour
                     other.gameObject.GetComponent<PlayerHealthManager>().HurtPlayer(damageToGive);
                     break;
                 case "Enemy":
+                    Debug.Log(other.gameObject.name);
                     other.gameObject.GetComponent<EnemyHealthManager>().HurtEnemy(damageToGive);
                     break;
             }
-            
         }
-
     }
-    }
+}

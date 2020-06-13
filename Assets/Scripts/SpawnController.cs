@@ -9,6 +9,8 @@ public class SpawnController : MonoBehaviour
     public Transform[] enemyCount;
     public int threatLevel;
 
+    [SerializeField] private HealthBar healthBar;
+
     private int countList;
     private int enemyListSpawn;
     private int amountToSpawn;
